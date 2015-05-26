@@ -25,6 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.sfk.activity.AddSfkActivity"
+            android:label="@string/title_activity_add_sfk" >
+        </activity>
+        <activity
+            android:name="com.sfk.activity.SfInfoActivity"
+            android:theme="@style/Transparent" >
+        </activity>
     </application>
 
 </manifest>
