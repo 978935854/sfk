@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.root.sfk.MainActivity;
-import com.example.root.sfk.NetUtils;
+import com.sfk.activity.MainActivity;
+import com.sfk.activity.NetUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
