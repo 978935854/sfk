@@ -33,6 +33,10 @@
             android:name="com.sfk.activity.SfInfoActivity"
             android:theme="@style/Transparent" >
         </activity>
+        <activity
+            android:name="com.sfk.activity.Register"
+            android:label="@string/register" >
+        </activity>
     </application>
 
 </manifest>

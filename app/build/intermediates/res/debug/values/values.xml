@@ -155,6 +155,7 @@
     <string name="addSfk">发布沙发</string>
     <string name="app_name">沙发客</string>
     <string name="bbs">社区</string>
+    <string name="et_digits">1234567890.@comnqqutlkgai</string>
     <string name="hello_world">Hello world!</string>
     <string name="info_sfk">沙发描述</string>
     <string name="lasttime_sfk">时间限制</string>
@@ -162,6 +163,7 @@
     <string name="othermessage_sfk">其他信息</string>
     <string name="panic">抢沙发</string>
     <string name="person">我的</string>
+    <string name="register">沙发客登录注册</string>
     <string name="saddress_sfk">沙发地点</string>
     <string name="sage_sfk">年龄限制</string>
     <string name="scontactway_sfk">联系方式</string>
@@ -171,6 +173,7 @@
     <string name="ssex_sfk">性别限制</string>
     <string name="stype_sfk">帖子类型</string>
     <string name="title_activity_add_sfk">AddSfkActivity</string>
+    <string name="title_activity_register">Register</string>
     <string name="title_sfk">沙发帖子标题</string>
     <string name="type_sfk">沙发类型</string>
     <string name="yourgoods_sfk">自带物品</string>

@@ -85,7 +85,6 @@ public class NetUtils {
     }
 
     //使用get方式登录
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static String loginOfGet(String username, String password) {
         HttpURLConnection conn = null;
         String info = null;
