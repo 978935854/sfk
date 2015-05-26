@@ -2,15 +2,14 @@ package com.sfk.activity;
 
 import android.app.Activity;
 import android.graphics.Paint;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import asynWork.RunPostToLoginAsyncTask;
-import asynWork.RunPostToRegisterAsyncTask;
+import com.sfk.asynWork.RunPostToLoginAsyncTask;
+import com.sfk.asynWork.RunPostToRegisterAsyncTask;
 
 
 public class Register extends Activity implements View.OnClickListener {

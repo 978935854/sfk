@@ -32,6 +32,10 @@
             android:name=".SfInfoActivity"
             android:theme="@style/Transparent" >
         </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/register" >
+        </activity>
     </application>
 
 </manifest>

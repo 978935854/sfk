@@ -27,6 +27,12 @@
     <string name="othermessage_sfk">其他信息</string>
     <string name="addSfk">发布沙发</string>
 
+    <!-- 登陆注册 -->
+
+    <string name="et_digits">1234567890.@comnqqutlkgai</string>
+    <string name="register">沙发客登录注册</string>
+    <string name="title_activity_register">Register</string>
+
     <style name="rg_btn_style">
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>

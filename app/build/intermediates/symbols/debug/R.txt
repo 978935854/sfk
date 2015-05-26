@@ -321,12 +321,13 @@ int id action_menu_presenter 0x7f080002
 int id action_mode_bar 0x7f08002f
 int id action_mode_bar_stub 0x7f08002e
 int id action_mode_close_button 0x7f080022
-int id action_settings 0x7f08007e
+int id action_settings 0x7f080096
 int id activity_chooser_view_content 0x7f080023
 int id address 0x7f080079
 int id address_btn 0x7f080074
 int id address_btn2 0x7f08006b
 int id addsfk 0x7f08005f
+int id age 0x7f080088
 int id always 0x7f080011
 int id bbs_TopTitle 0x7f080060
 int id bbs_TopicList 0x7f080061
@@ -341,6 +342,8 @@ int id centerSelect 0x7f080071
 int id checkbox 0x7f08002b
 int id cities 0x7f08005a
 int id collapseActionView 0x7f080012
+int id contactway 0x7f080093
+int id day 0x7f08008d
 int id default_activity_button 0x7f080026
 int id dialog 0x7f080016
 int id disableHome 0x7f080007
@@ -350,6 +353,7 @@ int id end 0x7f08000e
 int id exitSelect 0x7f080070
 int id expand_activities_button 0x7f080024
 int id expanded_menu 0x7f08002a
+int id f 0x7f08007e
 int id home 0x7f080003
 int id homeAsUp 0x7f080008
 int id icon 0x7f080028
@@ -361,6 +365,7 @@ int id imageView3 0x7f080078
 int id imageView4 0x7f08007a
 int id imageView5 0x7f08007c
 int id info 0x7f08004c
+int id intime 0x7f080081
 int id lasttime 0x7f08004f
 int id left_icon 0x7f080031
 int id listMode 0x7f080004
@@ -368,10 +373,13 @@ int id list_item 0x7f080027
 int id main_RadioGroup 0x7f080046
 int id main_fragment 0x7f080042
 int id main_radioButton 0x7f080047
+int id mannumber 0x7f08008b
 int id middle 0x7f08000f
+int id n 0x7f080089
 int id never 0x7f080014
 int id none 0x7f080010
 int id normal 0x7f080005
+int id otherinfo 0x7f080091
 int id othermessage 0x7f080052
 int id panic_fragment 0x7f080043
 int id panic_radioButton 0x7f080048
@@ -383,10 +391,12 @@ int id picker_view 0x7f08006f
 int id progress_circular 0x7f080034
 int id progress_horizontal 0x7f080035
 int id provinces 0x7f080059
+int id publictime 0x7f080095
 int id radio 0x7f08002d
 int id relativeLayout 0x7f080068
 int id right_container 0x7f080032
 int id right_icon 0x7f080033
+int id s 0x7f080084
 int id sage 0x7f08005c
 int id scontactway 0x7f08004d
 int id scrollView 0x7f08004b
@@ -403,6 +413,8 @@ int id search_voice_btn 0x7f080041
 int id seekSF_btn 0x7f080066
 int id seek_sf_topic_listView 0x7f080069
 int id seek_sf_topic_listView2 0x7f08006d
+int id selfgoods 0x7f08008f
+int id sex 0x7f080086
 int id sex_btn 0x7f080073
 int id sex_btn2 0x7f08006a
 int id sf_sex 0x7f08007b
@@ -420,10 +432,21 @@ int id stypesp 0x7f080055
 int id submit_area 0x7f08003f
 int id tabMode 0x7f080006
 int id textView 0x7f08006e
+int id textView10 0x7f080082
+int id textView11 0x7f080094
+int id textView12 0x7f080085
+int id textView14 0x7f08008a
+int id textView16 0x7f08008e
+int id textView18 0x7f080090
 int id textView2 0x7f080072
+int id textView20 0x7f08008c
+int id textView3 0x7f08007f
 int id textView4 0x7f080067
 int id textView5 0x7f080058
 int id textView6 0x7f08005b
+int id textView7 0x7f080092
+int id textView8 0x7f080087
+int id textView9 0x7f080080
 int id time 0x7f080077
 int id title 0x7f080029
 int id title_container 0x7f080030
@@ -432,6 +455,7 @@ int id type 0x7f080051
 int id up 0x7f08001f
 int id upImage 0x7f08005e
 int id useLogo 0x7f08000c
+int id where 0x7f080083
 int id withText 0x7f080015
 int id yourgoods 0x7f080050
 int integer abc_max_action_buttons 0x7f090000
@@ -470,7 +494,8 @@ int layout person_fragment 0x7f03001f
 int layout picker_layout 0x7f030020
 int layout seek_sf_topic 0x7f030021
 int layout seek_sf_topic_list 0x7f030022
-int layout support_simple_spinner_dropdown_item 0x7f030023
+int layout sf_info 0x7f030023
+int layout support_simple_spinner_dropdown_item 0x7f030024
 int menu main 0x7f0d0000
 int string ReleaseSF 0x7f0a0000
 int string abc_action_bar_home_description 0x7f0a0001
@@ -641,6 +666,7 @@ int style Widget_AppCompat_ProgressBar 0x7f0b007f
 int style Widget_AppCompat_ProgressBar_Horizontal 0x7f0b0080
 int style Widget_AppCompat_Spinner_DropDown_ActionBar 0x7f0b0081
 int style rg_btn_style 0x7f0b0082
+int style sf_info_text 0x7f0b0083
 int[] styleable ActionBar { 0x7f010020, 0x7f01003e, 0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042, 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e, 0x7f01004f }
 int styleable ActionBar_background 10
 int styleable ActionBar_backgroundSplit 12
