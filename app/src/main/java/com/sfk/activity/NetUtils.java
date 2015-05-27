@@ -1,7 +1,5 @@
 package com.sfk.activity;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.util.Log;
 
 import org.json.JSONException;

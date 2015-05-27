@@ -348,8 +348,8 @@ int id bbs_topicTime 0x7f08006b
 int id bbs_topicTitle 0x7f080069
 int id bbs_userName 0x7f08006a
 int id beginning 0x7f08000d
-int id btn_login 0x7f08004f
-int id btn_register 0x7f08004e
+int id btn_login 0x7f08004e
+int id btn_register 0x7f08004f
 int id centerSelect 0x7f080077
 int id checkbox 0x7f08002b
 int id cities 0x7f080060

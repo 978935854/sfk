@@ -35,7 +35,7 @@ public class RunPostToRegisterAsyncTask extends AsyncTask {
     protected Object doInBackground(Object[] params) {
         String result = NetUtils.loginOfPost(et_username.getText().toString(),
                 et_password.getText().toString(),
-                "http://192.168.1.116:8080/shaFaKe/customer/register!checkUserUsabilityAndRegister");
+                "http://192.168.1.118:8080/shaFaKe/customer/register!checkUserUsabilityAndRegister");
         return result;
     }
 

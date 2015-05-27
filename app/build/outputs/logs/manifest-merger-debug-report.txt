@@ -24,54 +24,62 @@ MERGED from com.android.support:appcompat-v7:18.0.0:18:5
 		ADDED from AndroidManifest.xml:8:9
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-application
+uses-permission#android.permission.INTERNET
 ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+application
+ADDED from AndroidManifest.xml:14:5
 MERGED from com.android.support:appcompat-v7:18.0.0:19:5
 	android:label
-		ADDED from AndroidManifest.xml:14:9
+		ADDED from AndroidManifest.xml:17:9
 	android:allowBackup
-		ADDED from AndroidManifest.xml:12:9
-	android:icon
-		ADDED from AndroidManifest.xml:13:9
-	android:theme
 		ADDED from AndroidManifest.xml:15:9
-activity#com.sfk.activity.SeekSFActivity
-ADDED from AndroidManifest.xml:16:9
+	android:icon
+		ADDED from AndroidManifest.xml:16:9
 	android:theme
-		ADDED from AndroidManifest.xml:17:13
-	android:name
-		ADDED from AndroidManifest.xml:16:19
-activity#com.sfk.activity.MainActivity
-ADDED from AndroidManifest.xml:18:9
-	android:label
+		ADDED from AndroidManifest.xml:18:9
+activity#com.sfk.activity.SeekSFActivity
+ADDED from AndroidManifest.xml:19:9
+	android:theme
 		ADDED from AndroidManifest.xml:20:13
 	android:name
-		ADDED from AndroidManifest.xml:19:13
+		ADDED from AndroidManifest.xml:19:19
+activity#com.sfk.activity.MainActivity
+ADDED from AndroidManifest.xml:21:9
+	android:label
+		ADDED from AndroidManifest.xml:23:13
+	android:name
+		ADDED from AndroidManifest.xml:22:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:21:13
+ADDED from AndroidManifest.xml:24:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:22:17
+ADDED from AndroidManifest.xml:25:17
 	android:name
-		ADDED from AndroidManifest.xml:22:25
+		ADDED from AndroidManifest.xml:25:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:23:17
+ADDED from AndroidManifest.xml:26:17
 	android:name
-		ADDED from AndroidManifest.xml:23:27
+		ADDED from AndroidManifest.xml:26:27
 activity#com.sfk.activity.AddSfkActivity
-ADDED from AndroidManifest.xml:26:9
+ADDED from AndroidManifest.xml:29:9
 	android:label
-		ADDED from AndroidManifest.xml:28:13
+		ADDED from AndroidManifest.xml:31:13
 	android:name
-		ADDED from AndroidManifest.xml:27:13
+		ADDED from AndroidManifest.xml:30:13
 activity#com.sfk.activity.SfInfoActivity
-ADDED from AndroidManifest.xml:31:9
+ADDED from AndroidManifest.xml:34:9
 	android:theme
-		ADDED from AndroidManifest.xml:33:13
-	android:name
-		ADDED from AndroidManifest.xml:32:13
-activity#com.sfk.activity.Register
-ADDED from AndroidManifest.xml:35:9
-	android:label
-		ADDED from AndroidManifest.xml:37:13
-	android:name
 		ADDED from AndroidManifest.xml:36:13
+	android:name
+		ADDED from AndroidManifest.xml:35:13
+activity#com.sfk.activity.Register
+ADDED from AndroidManifest.xml:38:9
+	android:label
+		ADDED from AndroidManifest.xml:40:13
+	android:name
+		ADDED from AndroidManifest.xml:39:13
