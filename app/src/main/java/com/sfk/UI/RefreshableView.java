@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -426,6 +427,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
 
         @Override
         protected void onProgressUpdate(Integer... topMargin) {
+            Log.i("topMargin",topMargin[0]+"");
             updateHeaderView();
             headerLayoutParams.topMargin = topMargin[0];
             header.setLayoutParams(headerLayoutParams);
