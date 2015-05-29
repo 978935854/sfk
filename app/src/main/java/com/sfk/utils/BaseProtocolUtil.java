@@ -2,6 +2,10 @@ package com.sfk.utils;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,7 +53,7 @@ public class BaseProtocolUtil {
 
     }
 
-
+    //服务器端返回数据并解析
     public void parse() throws IOException {
         if(conn.getResponseCode()==HttpURLConnection.HTTP_OK){
             InputStream is = conn.getInputStream();
@@ -64,6 +68,7 @@ public class BaseProtocolUtil {
         }
     }
 
+    //添加数据到POST请求传输
     public void addDate(Map<String,String> map) throws UnsupportedEncodingException {
         for (Map.Entry<String,String> entry :map.entrySet()){
             data.append(entry.getKey());
@@ -75,5 +80,11 @@ public class BaseProtocolUtil {
         strData = data.toString();
     }
 
+    //获取服务器端返回来的JSONObject数据并解析
+    public JSONArray getJSONArray(String arrayKey) throws JSONException {
+        JSONObject jsonObject = new JSONObject(sb.toString());
+        JSONArray jsonArray = jsonObject.getJSONArray(arrayKey);
+        return jsonArray;
+    }
 
 }

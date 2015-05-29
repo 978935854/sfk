@@ -1,8 +1,14 @@
 package com.sfk.service;
 
+import android.util.Log;
+
 import com.sfk.Constant.Constant;
 import com.sfk.pojo.Sfk;
 import com.sfk.utils.BaseProtocolUtil;
+import com.sfk.utils.JsonUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,13 +35,17 @@ public class SeekSFService {
             seekSFTopicList = new ArrayList<Sfk>();
             BaseProtocolUtil baseProtocolUtil = new BaseProtocolUtil();
             try {
-                Map<String,String> map = new HashMap<String, String>();
-                map.put("userName","黎明");
-                map.put("userPass","liming");
-                baseProtocolUtil.addDate(map);
-                baseProtocolUtil.packPost(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
+                baseProtocolUtil.packGet(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
                 baseProtocolUtil.parse();
+                JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
+                for(int i=0;i<sfkArray.length();i++){
+                    Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
+                    seekSFTopicList.add(sfk);
+                }
+                Log.i("sfkList",seekSFTopicList.toString());
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

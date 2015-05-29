@@ -65,7 +65,7 @@
             android:textColor="#ffed8a00"
             android:layout_marginLeft="10dp"
             android:textSize="18sp" />
-
+<!--
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="40dp"
@@ -85,7 +85,7 @@
                 android:layout_marginLeft="5dp" />
         </LinearLayout>
 
-
+-->
     </RelativeLayout>
 
     <RelativeLayout
