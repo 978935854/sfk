@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+<!--
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/user_headPhoto"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="11dp"
+            android:background="@drawable/head_1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="妮妮"
+            android:id="@+id/userName"
+            android:layout_alignTop="@+id/user_headPhoto"
+            android:layout_toRightOf="@+id/user_headPhoto"
+            android:layout_marginLeft="13dp"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sex"
+            android:background="@drawable/sf_list_female"
+            android:layout_alignTop="@+id/age"
+            android:layout_alignLeft="@+id/userName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21"
+            android:id="@+id/age"
+            android:layout_marginLeft="6dp"
+            android:layout_below="@+id/userName"
+            android:layout_toRightOf="@+id/sex"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我爱旅游，更爱沙发客"
+            android:id="@+id/sign"
+            android:layout_alignBottom="@+id/user_headPhoto"
+            android:layout_alignLeft="@+id/sex"
+            android:textSize="10sp"
+            android:textColor="@android:color/black" />
+-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小屋有空闲沙发"
+            android:id="@+id/title"
+            android:layout_marginTop="11dp"
+            android:textColor="#ffed8a00"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="40dp"
+            android:layout_height="18dp"
+            android:background="#ff0e8810"
+            android:layout_alignBottom="@+id/title"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="积分10"
+                android:id="@+id/textView13"
+                android:textSize="8sp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:background="#0f55ff1a"
+        android:layout_marginTop="5dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/imageView2"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/time_a"
+            android:layout_alignTop="@+id/time"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2015-05-01~2015-05-03"
+            android:id="@+id/time"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/imageView3"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/location_a"
+            android:layout_below="@+id/time"
+            android:layout_alignLeft="@+id/imageView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广州市白云区石井镇广东科贸职业学院"
+            android:id="@+id/address"
+            android:textColor="@android:color/black"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_alignLeft="@+id/time" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/imageView4"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/people_a"
+            android:layout_below="@+id/imageView3"
+            android:layout_alignLeft="@+id/imageView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男女不限"
+            android:id="@+id/sf_sex"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_alignLeft="@+id/address"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/imageView5"
+            android:background="@drawable/sm_a"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/time"
+            android:layout_marginBottom="11dp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客房"
+            android:id="@+id/sftype"
+            android:textColor="@android:color/black"
+            android:layout_alignTop="@+id/imageView5"
+            android:layout_alignLeft="@+id/sf_sex" />
+
+    </RelativeLayout>
+</LinearLayout>

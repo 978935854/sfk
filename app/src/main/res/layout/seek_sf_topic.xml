@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#42a664">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="寻找沙发"
+            android:id="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#f5f5f5">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"
+            android:id="@+id/sex_btn"
+            android:background="#f5f5f5"
+            android:layout_weight="0.33"
+            android:textSize="13sp"
+            android:drawableRight="@drawable/arrow_filter"/>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="#ccc"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地点"
+            android:id="@+id/address_btn"
+            android:background="#f5f5f5"
+            android:layout_weight="0.33"
+            android:textSize="13sp"
+            android:drawableRight="@drawable/arrow_filter"/>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="#ccc"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接待人数"
+            android:id="@+id/peopleNum_btn"
+            android:background="#f5f5f5"
+            android:layout_weight="0.33"
+            android:textSize="13sp"
+            android:drawableRight="@drawable/arrow_filter"
+            android:layout_marginRight="5dp" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/seek_sf_topic_listView" />
+</LinearLayout>
