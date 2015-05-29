@@ -32,7 +32,7 @@ public class SeekSFService {
 //                baseProtocolUtil.packGet(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
 //                baseProtocolUtil.parse();
                 Map<String,String> map = new HashMap<String, String>();
-                map.put("userName","黎明2");
+                map.put("userName","黎明");
                 map.put("userPass","liming");
                 baseProtocolUtil.addDate(map);
                 baseProtocolUtil.packPost(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
