@@ -29,8 +29,6 @@ public class SeekSFService {
             seekSFTopicList = new ArrayList<Sfk>();
             BaseProtocolUtil baseProtocolUtil = new BaseProtocolUtil();
             try {
-//                baseProtocolUtil.packGet(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
-//                baseProtocolUtil.parse();
                 Map<String,String> map = new HashMap<String, String>();
                 map.put("userName","黎明");
                 map.put("userPass","liming");
