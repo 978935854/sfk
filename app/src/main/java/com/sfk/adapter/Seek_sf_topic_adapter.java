@@ -65,21 +65,40 @@ public class Seek_sf_topic_adapter extends BaseAdapter {
         title.setText(seekSFTopicList.get(position).getStitle());
         time.setText(seekSFTopicList.get(position).getStime());
         address.setText(seekSFTopicList.get(position).getSaddress());
+        //可接待性别
         switch (seekSFTopicList.get(position).getSsex()){
             case 0:
-                sf_sex.setText("只接待女");
+                sf_sex.setText("全部(性别)");
                 break;
             case 1:
-                sf_sex.setText("只接待男");
+                sf_sex.setText("只接待女");
                 break;
             case 2:
+                sf_sex.setText("只接待男");
+                break;
+            case 3:
                 sf_sex.setText("男女不限");
                 break;
             default:
                 break;
         }
-
-        sftype.setText(seekSFTopicList.get(position).getStype()+"");
+        //提供的沙发类型
+        switch (seekSFTopicList.get(position).getStype()){
+            case 0:
+                sftype.setText("其他");
+                break;
+            case 1:
+                sftype.setText("地铺");
+                break;
+            case 2:
+                sftype.setText("客房");
+                break;
+            case 3:
+                sftype.setText("沙发");
+                break;
+            default:
+                break;
+        }
         return convertView;
     }
 

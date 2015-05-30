@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="Transparent" parent="android:Theme.Light">
+        <!--将Activity的Theme设置成透明-->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>
