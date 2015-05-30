@@ -36,7 +36,7 @@ public class SeekSFService {
             seekSFTopicList = new ArrayList<Sfk>();
             baseProtocolUtil = new BaseProtocolUtil();
             try {
-                baseProtocolUtil.packGet(Constant.projectServicePath+"SfkAction!findSeekSFTopicList");
+                baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList");
                 baseProtocolUtil.parse();
                 JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
                 for(int i=0;i<sfkArray.length();i++){
@@ -72,7 +72,7 @@ public class SeekSFService {
             seekSFTopicList = new ArrayList<Sfk>();
             baseProtocolUtil = new BaseProtocolUtil();
             try {
-                baseProtocolUtil.packGet(Constant.projectServicePath+"SfkAction!findSeekSFTopicListBySfk?"
+                baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
                         +"sfk.ssex="+sfk.getSsex()+"&"
                         +"sfk.saddress="+sfk.getSaddress()+"&"
                         +"sfk.speoplenum="+sfk.getSpeoplenum()
