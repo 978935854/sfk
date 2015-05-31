@@ -34,6 +34,8 @@ public class SeekSFActivity extends Activity {
     private List<Sfk> seekSFTopicList = new ArrayList<Sfk>();
     SeekSFService seekSFService;
     Button sex_btn,address_btn,peopleNum_btn;
+    View load_data_view;
+    Seek_sf_topic_adapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +53,11 @@ public class SeekSFActivity extends Activity {
         }
 
         seek_sf_topic_listView = (ListView) findViewById(R.id.seek_sf_topic_listView);
-        Seek_sf_topic_adapter adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
+        adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
+        load_data_view = this.getLayoutInflater().inflate(R.layout.load_data_style,null);
+        seek_sf_topic_listView.addHeaderView(load_data_view);   //添加listview加载数据进度条
         seek_sf_topic_listView.setAdapter(adapter);
+        seek_sf_topic_listView.removeHeaderView(load_data_view);////加载完listview关闭数据进度条
 
         dataList = new ArrayList<String>();
         dataList.add("全部(性别)");
@@ -139,9 +144,12 @@ public class SeekSFActivity extends Activity {
             }
 
             try {
-                List<Sfk> seekSFTopicList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
-                Seek_sf_topic_adapter adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
-                seek_sf_topic_listView.setAdapter(adapter);
+                seek_sf_topic_listView.addHeaderView(load_data_view);//添加listview加载数据进度条
+                seekSFTopicList.clear();                            //清除原有的listview数据源
+                List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
+                seekSFTopicList.addAll(sfkList);                    //listview数据源更新
+                adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
+                seek_sf_topic_listView.removeHeaderView(load_data_view);//加载完listview数据，关闭数据进度条
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
