@@ -38,6 +38,6 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-
+    <string name="title_activity_add_sfk">AddSfkActivity</string>
 
 </resources>
