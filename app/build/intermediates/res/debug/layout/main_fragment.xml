@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#ffececec">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:background="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searchSF"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffa9a9a9" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/main_bg2">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="50dp">
+            <ImageButton
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:id="@+id/seekSF_btn"
+                android:background="@drawable/main_yellow_circle_selector"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seekSF"
+                android:id="@+id/textView4"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:layout_below="@+id/seekSF_btn"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="34dp"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="103dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:id="@+id/seek_sf_topic_listView"
+                android:background="@drawable/main_green_circle_selector"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ReleaseSF"
+                android:id="@+id/textView5"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_below="@+id/seek_sf_topic_listView"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/main_fragment.xml -->
