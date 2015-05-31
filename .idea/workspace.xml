@@ -62,7 +62,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.sfk" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eed21a-4d94-459e-89c6-3d1e9be66006" name="Default" comment="" />
+    <list default="true" id="63eed21a-4d94-459e-89c6-3d1e9be66006" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="sfk.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -107,8 +110,8 @@
       <file leaf-file-name="Constant.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25" vertical-offset="0" max-vertical-offset="540">
-              <caret line="5" column="73" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="73" />
+            <state vertical-scroll-proportion="0.19529837" vertical-offset="0" max-vertical-offset="553">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -907,8 +910,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sfk/adapter/Seek_sf_topic_adapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sfk/service/SeekSFService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/load_data_style.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sfk/activity/SeekSFActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java" />
       </list>
     </option>
   </component>
@@ -1519,7 +1522,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1530,9 +1533,9 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32951945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34439358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34439358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25214133" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1989,8 +1992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sfk/Constant/Constant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25" vertical-offset="0" max-vertical-offset="540">
-          <caret line="5" column="73" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.19529837" vertical-offset="0" max-vertical-offset="553">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
           <folding />
         </state>
       </provider>
