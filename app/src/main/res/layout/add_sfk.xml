@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title_sfk"
+                android:id="@+id/title" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/info_sfk"
+                android:id="@+id/info" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/scontactway_sfk"
+                android:ems="100"
+                android:id="@+id/scontactway" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/account_sfk"
+                android:ems="10"
+                android:enabled="true"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="8"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:id="@+id/account" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/lasttime_sfk"
+                android:id="@+id/lasttime" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/yourgoods_sfk"
+                android:id="@+id/yourgoods" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/type_sfk"
+                android:id="@+id/type" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/othermessage_sfk"
+                android:id="@+id/othermessage" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/speoplenum_sfk"
+                android:id="@+id/speoplenum" />
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/stype_sfk"
+                    android:id="@+id/stype"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/stypesp"
+                    android:entries="@array/type"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/ssex_sfk"
+                    android:id="@+id/ssex_sfk"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/ssex"
+                    android:entries="@array/sex"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:text="@string/saddress_sfk"
+                    android:id="@+id/textView5" />
+
+                <Spinner
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/provinces" />
+                <Spinner
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/cities" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sage_sfk"
+                    android:id="@+id/textView6" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/age"
+                    android:id="@+id/sage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/bg_imageview"
+                    android:id="@+id/imageView" />
+
+                <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/upImage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:paddingTop="50dp"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp"
+                    android:id="@+id/addsfk" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
