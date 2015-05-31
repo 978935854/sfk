@@ -12,6 +12,21 @@
     <string name="seekSF">寻找沙发</string>
     <string name="ReleaseSF">发布沙发</string>
 
+    <string name="title_sfk">沙发帖子标题</string>
+    <string name="saddress_sfk">沙发地点</string>
+    <string name="info_sfk">沙发描述</string>
+    <string name="account_sfk">沙发帖子内容</string>
+    <string name="type_sfk">沙发类型</string>
+    <string name="stype_sfk">帖子类型</string>
+    <string name="speoplenum_sfk">人数限制</string>
+    <string name="ssex_sfk">性别限制</string>
+    <string name="sage_sfk">年龄限制</string>
+    <string name="lasttime_sfk">时间限制</string>
+    <string name="yourgoods_sfk">自带物品</string>
+    <string name="scontactway_sfk">联系方式</string>
+    <string name="othermessage_sfk">其他信息</string>
+    <string name="addSfk">发布沙发</string>
+
     <style name="rg_btn_style">
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
@@ -22,4 +37,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+
+
 </resources>
