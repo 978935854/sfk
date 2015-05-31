@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/yellow_circle_up" android:state_enabled="true" android:state_pressed="true"/>
     <item android:drawable="@drawable/yellow_circle" android:state_enabled="true"/>
-</selector><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/drawable-xhdpi/main_yellow_circle_selector.xml -->
+</selector><!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/drawable-xhdpi/main_yellow_circle_selector.xml -->
