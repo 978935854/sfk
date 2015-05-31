@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ListView;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/5/27.
  */
-public class SeekSFActivity extends Activity {
+public class SeekSFActivity extends Activity implements AdapterView.OnItemClickListener {
     private ListView seek_sf_topic_listView;
     List<String> dataList,peopleNum_dataList;
     private List<Sfk> seekSFTopicList = new ArrayList<Sfk>();
@@ -51,13 +52,14 @@ public class SeekSFActivity extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        //list
         seek_sf_topic_listView = (ListView) findViewById(R.id.seek_sf_topic_listView);
         adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
         load_data_view = this.getLayoutInflater().inflate(R.layout.load_data_style,null);
         seek_sf_topic_listView.addHeaderView(load_data_view);   //添加listview加载数据进度条
         seek_sf_topic_listView.setAdapter(adapter);
         seek_sf_topic_listView.removeHeaderView(load_data_view);////加载完listview关闭数据进度条
+        seek_sf_topic_listView.setOnItemClickListener(this);
 
         dataList = new ArrayList<String>();
         dataList.add("全部(性别)");
@@ -86,6 +88,8 @@ public class SeekSFActivity extends Activity {
 
     //广播接收选择器参数
     IntentFilter filter = new IntentFilter("picker_seletedText");
+
+
     class PickerSendBroadcast extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -154,6 +158,15 @@ public class SeekSFActivity extends Activity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //list监听
+        Intent intent=new Intent();
+        intent.setClass(this,SfInfoActivity.class);
+        startActivity(intent);
+
     }
 
 }
