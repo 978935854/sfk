@@ -139,7 +139,7 @@ public class AddSfkActivity extends ActionBarActivity {
 
 
     }
-
+    //监听市下拉框，获取选取内容
     private void setcities() {
         spcities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
