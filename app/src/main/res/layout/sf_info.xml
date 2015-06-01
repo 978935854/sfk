@@ -45,18 +45,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="6dp"
-                android:textStyle=""
                 android:text="类型："
+                style="@style/sf_info_text"
                 android:id="@+id/textView3" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="卧室"
                 android:id="@+id/type" />
         </LinearLayout>
@@ -67,14 +61,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="可入住时间："
                 android:id="@+id/textView9" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="2015-5-31"
                 android:id="@+id/intime" />
         </LinearLayout>
@@ -85,14 +77,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="沙发地点："
                 android:id="@+id/textView10" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="北京四环"
                 android:id="@+id/where" />
         </LinearLayout>
@@ -110,14 +100,12 @@
                 android:id="@+id/s">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="性别限制："
                     android:id="@+id/textView12" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="女"
                     android:id="@+id/sex" />
             </LinearLayout>
@@ -129,14 +117,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="年龄限制："
                     android:id="@+id/textView8" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="20~40岁"
                     android:id="@+id/age" />
             </LinearLayout>
@@ -155,14 +141,12 @@
                 android:id="@+id/n">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="招待人数："
                     android:id="@+id/textView14" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="1人"
                     android:id="@+id/mannumber" />
             </LinearLayout>
@@ -174,14 +158,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="接待天数："
                     android:id="@+id/textView20" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/sf_info_text"
                     android:text="3天以内"
                     android:id="@+id/day" />
             </LinearLayout>
@@ -193,14 +175,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="自带物品："
                 android:id="@+id/textView16" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="毛巾，牙刷，等。。。"
                 android:id="@+id/selfgoods" />
         </LinearLayout>
@@ -211,14 +191,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="其他信息："
                 android:id="@+id/textView18" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="要求入住者身体健康"
                 android:id="@+id/otherinfo" />
 
@@ -230,14 +208,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="联系方式："
                 android:id="@+id/textView7" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="手机：123456789"
                 android:id="@+id/contactway" />
         </LinearLayout>
@@ -248,14 +224,12 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="发布时间："
                 android:id="@+id/textView11" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
                 android:text="2015-5-30"
                 android:id="@+id/publictime" />
         </LinearLayout>
