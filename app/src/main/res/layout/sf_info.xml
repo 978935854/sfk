@@ -33,10 +33,14 @@
             android:id="@+id/f">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/sf_info_text"
+                android:textColor="#ffed8a00"
+                android:textSize="18sp"
+                android:gravity="center"
                 android:text="北京西四环沙发"
-                android:id="@+id/title" />
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
