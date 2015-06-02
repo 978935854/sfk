@@ -1,4 +1,6 @@
 package com.sfk.activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +20,11 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+        SharedPreferences spf = getSharedPreferences("LOGIN_STATUS", 0);
+        if (spf.getString("username", null) == null) {
+            Intent intent = new Intent(this, Register.class);
+            startActivity(intent);
+        }
         fragments = new Fragment[4];
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();

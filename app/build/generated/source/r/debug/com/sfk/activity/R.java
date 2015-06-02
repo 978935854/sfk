@@ -885,8 +885,8 @@ containing a value of this type.
         public static final int bbs_topicTitle=0x7f080069;
         public static final int bbs_userName=0x7f08006a;
         public static final int beginning=0x7f08000d;
-        public static final int btn_login=0x7f08004f;
-        public static final int btn_register=0x7f08004e;
+        public static final int btn_login=0x7f08004e;
+        public static final int btn_register=0x7f08004f;
         public static final int centerSelect=0x7f080077;
         public static final int checkbox=0x7f08002b;
         public static final int cities=0x7f080060;
