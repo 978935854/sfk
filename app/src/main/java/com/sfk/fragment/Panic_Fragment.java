@@ -43,7 +43,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         //注册接收选择器的参数
         getActivity().registerReceiver(new PickerSendBroadcast(), filter);
 
-        seekSFService = new SeekSFService();
+        seekSFService = new SeekSFService(getActivity());
         //获取沙发单列表
         try {
             seekSFTopicList = seekSFService.getSeekSFTopicList();
@@ -69,7 +69,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         address_btn = (Button) view.findViewById(R.id.address_btn2);
         peopleNum_btn = (Button) view.findViewById(R.id.peopleNum_btn2);
 
-        PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(getActivity(),dataList,R.id.sex_btn);
+        PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(getActivity(),dataList,sex_btn);
         sex_btn.setOnClickListener(pickerOnClickListener);
 
         peopleNum_dataList = new ArrayList<String>();
@@ -79,7 +79,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         peopleNum_dataList.add("接待3人");
         peopleNum_dataList.add("接待3人以上");
 
-        PickerOnClickListener peopleNum_pickerOnClickListener = new PickerOnClickListener(getActivity(),peopleNum_dataList,R.id.peopleNum_btn2);
+        PickerOnClickListener peopleNum_pickerOnClickListener = new PickerOnClickListener(getActivity(),peopleNum_dataList,peopleNum_btn);
         peopleNum_btn.setOnClickListener(peopleNum_pickerOnClickListener);
 
         return view;

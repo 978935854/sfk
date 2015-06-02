@@ -33,10 +33,11 @@ public class AddSfkActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_sfk);
         setView();
-        getAddSfkInfo();
-        addSfkOnclick();
         setProvinces();
         setcities();
+        getAddSfkInfo();
+        addSfkOnclick();
+
 
     }
 

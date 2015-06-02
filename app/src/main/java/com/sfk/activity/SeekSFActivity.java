@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -14,9 +15,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.sfk.UI.PickerView;
+import com.sfk.UI.RefreshableView;
 import com.sfk.adapter.Seek_sf_topic_adapter;
 import com.sfk.listener.PickerOnClickListener;
 import com.sfk.pojo.Sfk;
@@ -37,6 +40,8 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     Button sex_btn,address_btn,peopleNum_btn;
     View load_data_view;
     Seek_sf_topic_adapter adapter;
+    RefreshableView refreshableView;
+    Handler refreshableHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +50,32 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         //注册接收选择器的参数
         registerReceiver(new PickerSendBroadcast(), filter);
 
-        seekSFService = new SeekSFService();
+        loadFirstData();    //首次加载沙发单列表
+        loadSelectData();   //选择加载沙发单列表
+        refreshableView = (RefreshableView) findViewById(R.id.refreshable_view);
+        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshableHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
+                    }
+                });
+                refreshableView.finishRefreshing();
+            }
+        }, 0);
+
+    }
+
+    //首次加载沙发单列表
+    private void loadFirstData() {
+        seekSFService = new SeekSFService(this);
         //获取沙发单列表
         try {
             seekSFTopicList = seekSFService.getSeekSFTopicList();
         } catch (InterruptedException e) {
+            Log.i("InterruptedException2","InterruptedException");
             e.printStackTrace();
         }
         //list
@@ -60,18 +86,21 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         seek_sf_topic_listView.setAdapter(adapter);
         seek_sf_topic_listView.removeHeaderView(load_data_view);////加载完listview关闭数据进度条
         seek_sf_topic_listView.setOnItemClickListener(this);
+    }
 
+    //选择加载沙发单列表
+    private void loadSelectData() {
         dataList = new ArrayList<String>();
-        dataList.add("全部(性别)");
-        dataList.add("男");
-        dataList.add("女");
+        dataList.add("接待(全部)");
+        dataList.add("接待(男)");
+        dataList.add("接待(女)");
         dataList.add("男女不限");
 
         sex_btn = (Button) findViewById(R.id.sex_btn);
         address_btn = (Button) findViewById(R.id.address_btn);
         peopleNum_btn = (Button) findViewById(R.id.peopleNum_btn);
 
-        PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(this,dataList,R.id.sex_btn);
+        PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(this,dataList,sex_btn);
         sex_btn.setOnClickListener(pickerOnClickListener);
 
         peopleNum_dataList = new ArrayList<String>();
@@ -81,9 +110,8 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         peopleNum_dataList.add("接待3人");
         peopleNum_dataList.add("接待3人以上");
 
-        PickerOnClickListener peopleNum_pickerOnClickListener = new PickerOnClickListener(this,peopleNum_dataList,R.id.peopleNum_btn);
+        PickerOnClickListener peopleNum_pickerOnClickListener = new PickerOnClickListener(this,peopleNum_dataList,peopleNum_btn);
         peopleNum_btn.setOnClickListener(peopleNum_pickerOnClickListener);
-
     }
 
     //广播接收选择器参数
@@ -93,70 +121,54 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     class PickerSendBroadcast extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String selectedText = intent.getStringExtra("selectedText");
-            int btn = intent.getIntExtra("btn",0);
-            Sfk sfk = new Sfk();
-            if(btn==R.id.sex_btn){
-                sex_btn.setText(selectedText);
-                    int ssex = 0;
-                    if("女".equals(selectedText)){
-                        ssex=1;
-                    }else if("男".equals(selectedText)){
-                        ssex=2;
-                    }else if("男女不限".equals(selectedText)){
-                        ssex=3;
-                    }
-                    sfk.setSsex(ssex);
-                    if("全部(人数)".equals(peopleNum_btn.getText())){
-                        sfk.setSpeoplenum(0);
-                    }else if("接待1人".equals(peopleNum_btn.getText())){
-                        sfk.setSpeoplenum(1);
-                    }else if("接待2人".equals(peopleNum_btn.getText())){
-                        sfk.setSpeoplenum(2);
-                    }else if("接待3人".equals(peopleNum_btn.getText())){
-                        sfk.setSpeoplenum(3);
-                    }else if("接待3人以上".equals(peopleNum_btn.getText())){
-                        sfk.setSpeoplenum(4);
-                    }
-            }
-            else if(btn==R.id.peopleNum_btn){
-                peopleNum_btn.setText(selectedText);
-                if("全部(人数)".equals(selectedText)){
-                    sfk.setSpeoplenum(0);
-                }else if("接待1人".equals(selectedText)){
-                    sfk.setSpeoplenum(1);
-                }else if("接待2人".equals(selectedText)){
-                    sfk.setSpeoplenum(2);
-                }else if("接待3人".equals(selectedText)){
-                    sfk.setSpeoplenum(3);
-                }else if("接待3人以上".equals(selectedText)){
-                    sfk.setSpeoplenum(4);
-                }
+            RelativeLayout select_refresh_relativeLayout = (RelativeLayout) findViewById(R.id.select_to_refresh_head);
+            select_refresh_relativeLayout.setVisibility(View.VISIBLE);
+            loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
+            select_refresh_relativeLayout.setVisibility(View.GONE);
+        }
+    }
+    //根据顶部搜索条件，加载listview菜单新数据
+    private void loadNewData(){
+        Sfk sfk = new Sfk();
+        if("接待(女)".equals(sex_btn.getText())){
+            sfk.setSsex(1);
+        }else if("接待(男)".equals(sex_btn.getText())){
+            sfk.setSsex(2);
+        }else if("男女不限".equals(sex_btn.getText())){
+            sfk.setSsex(3);
+        }else{
+            sfk.setSsex(0);
+        }
 
-                int ssex = 0;
-                if("女".equals(sex_btn.getText())){
-                    ssex=1;
-                }else if("男".equals(sex_btn.getText())){
-                    ssex=2;
-                }else if("男女不限".equals(sex_btn.getText())){
-                    ssex=3;
-                }
-                sfk.setSsex(ssex);
-            }
-            if("地点".equals(address_btn.getText())){
-                sfk.setSaddress("");
-            }
+        Log.i("ssex22",sfk.getSsex().toString());
 
-            try {
-                seek_sf_topic_listView.addHeaderView(load_data_view);//添加listview加载数据进度条
-                seekSFTopicList.clear();                            //清除原有的listview数据源
-                List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
-                seekSFTopicList.addAll(sfkList);                    //listview数据源更新
-                adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
-                seek_sf_topic_listView.removeHeaderView(load_data_view);//加载完listview数据，关闭数据进度条
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        if("全部(人数)".equals(peopleNum_btn.getText())){
+            sfk.setSpeoplenum(0);
+        }else if("接待1人".equals(peopleNum_btn.getText())){
+            sfk.setSpeoplenum(1);
+        }else if("接待2人".equals(peopleNum_btn.getText())){
+            sfk.setSpeoplenum(2);
+        }else if("接待3人".equals(peopleNum_btn.getText())){
+            sfk.setSpeoplenum(3);
+        }else if("接待3人以上".equals(peopleNum_btn.getText())){
+            sfk.setSpeoplenum(4);
+        }
+
+        if("地点".equals(address_btn.getText())){
+            sfk.setSaddress("");
+        }else {
+            sfk.setSaddress(address_btn.getText().toString());
+        }
+
+        try {
+            seek_sf_topic_listView.addHeaderView(load_data_view);//添加listview加载数据进度条
+            seekSFTopicList.clear();                            //清除原有的listview数据源
+            List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
+            seekSFTopicList.addAll(sfkList);                    //listview数据源更新
+            adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
+            seek_sf_topic_listView.removeHeaderView(load_data_view);//加载完listview数据，关闭数据进度条
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

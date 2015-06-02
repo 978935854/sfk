@@ -30,7 +30,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:text="全部(性别)"
+            android:text="接待(全部)"
             android:id="@+id/sex_btn"
             android:background="@drawable/common_btn_selector"
             android:layout_weight="0.33"
@@ -69,10 +69,17 @@
             android:layout_marginRight="5dp" />
     </LinearLayout>
 
+    <include layout="@layout/select_to_refresh"/>
+
+    <com.sfk.UI.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/seek_sf_topic_listView"
         android:layout_marginTop="5dp"
         android:background="#ffffff" />
+    </com.sfk.UI.RefreshableView>
 </LinearLayout>

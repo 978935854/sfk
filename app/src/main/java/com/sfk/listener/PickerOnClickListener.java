@@ -22,8 +22,8 @@ public class PickerOnClickListener implements View.OnClickListener{
     List<String> dataList;
     View pickerView;
     String selectedText=null;
-    int btn;
-    public PickerOnClickListener(Context context, List<String> dataList, int btn) {
+    Button btn;
+    public PickerOnClickListener(Context context, List<String> dataList,Button btn) {
         this.context = context;
         this.dataList = dataList;
         this.btn = btn;
@@ -40,7 +40,6 @@ public class PickerOnClickListener implements View.OnClickListener{
             @Override
             public void onSelect(String text) {
                 selectedText=text;
-//                Toast.makeText(context, text + "", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -59,9 +58,10 @@ public class PickerOnClickListener implements View.OnClickListener{
         centerSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn.setText(selectedText);
                 Intent intent = new Intent();
                 intent.putExtra("selectedText",selectedText);
-                intent.putExtra("btn",btn);
+                intent.putExtra("btn",btn.getId());
                 intent.setAction("picker_seletedText");
                 context.sendBroadcast(intent);
                 alertDialog.dismiss();

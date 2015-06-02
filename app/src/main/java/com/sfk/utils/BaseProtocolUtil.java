@@ -27,45 +27,67 @@ public class BaseProtocolUtil {
     private StringBuilder data = new StringBuilder();
     private String strData;
     //GET请求方式
-    public void packGet(String url) throws IOException {
+    public void packGet(String url) {
         Log.i("baseurl",url);
-        conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setRequestMethod("GET");
-        conn.setConnectTimeout(3000);
-        conn.setDoOutput(true);
-        conn.setDoInput(true);
+        try {
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("GET");
+            conn.setReadTimeout(1000 * 5);
+            conn.setConnectTimeout(1000 * 10);
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+
     }
 
 
     //POST请求方式
-    public void packPost(String url) throws IOException {
+    public void packPost(String url){
         Log.i("baseurl",url);
         byte[] newData = strData.toString().getBytes();
-        conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        conn.setRequestProperty("Content-Length",String.valueOf(newData.length));
-        conn.setConnectTimeout(3000);
-        conn.setDoOutput(true);
-        OutputStream os = conn.getOutputStream();
-        os.write(newData);
-        os.close();
+        try {
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Length",String.valueOf(newData.length));
+            conn.setConnectTimeout(3000);
+            conn.setDoOutput(true);
+            OutputStream os = conn.getOutputStream();
+            os.write(newData);
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     //服务器端返回数据并解析
-    public void parse() throws IOException {
-        if(conn.getResponseCode()==HttpURLConnection.HTTP_OK){
-            InputStream is = conn.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-            for (String s = bufferedReader.readLine(); s != null; s = bufferedReader
-                    .readLine()) {
-                sb.append(s);
+    public String parse()  {
+        String responseCode = null;
+        try {
+            if(conn.getResponseCode()==HttpURLConnection.HTTP_OK){
+                InputStream is = conn.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+                for (String s = bufferedReader.readLine(); s != null; s = bufferedReader
+                        .readLine()) {
+                    sb.append(s);
+                }
+                Log.i("sb",sb.toString());
+                is.close();
+                bufferedReader.close();
+                responseCode="ok";
+            }else{
+
             }
-            Log.i("sb",sb.toString());
-            is.close();
-            bufferedReader.close();
+        return responseCode;
+        } catch (IOException e) {
+            responseCode="error";
+            e.printStackTrace();
+            return responseCode;
         }
+
     }
 
     //添加数据到POST请求传输
