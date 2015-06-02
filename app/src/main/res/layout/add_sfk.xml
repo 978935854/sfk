@@ -35,6 +35,12 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/type_sfk"
+                android:id="@+id/type" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/account_sfk"
                 android:ems="10"
                 android:enabled="true"
@@ -56,12 +62,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/yourgoods_sfk"
                 android:id="@+id/yourgoods" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/type_sfk"
-                android:id="@+id/type" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -163,16 +163,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    android:layout_margin="20dp"
-                    android:id="@+id/imageView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/path"
+                    android:id="@+id/path" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Choice"
+                    android:id="@+id/choice" />
 
                 <ImageButton
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:id="@+id/upImage" />
+
             </LinearLayout>
 
             <LinearLayout

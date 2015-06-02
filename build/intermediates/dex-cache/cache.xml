@@ -2,18 +2,25 @@
 <items version="2" >
 
     <item
-        jar="D:\android\android-sdk-windows\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jar="E:\java\jre\bin\1\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="D:\Users\Administrator\AndroidStudioProjects\sfk\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-4882da775c56625a30b61c8b215e3764340477d9.jar" />
+        <dex dex="E:\android\android\Git_sfk\sfk\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-e00de48c24050582ede56040dff5cf053a0e637d.jar" />
     </item>
     <item
-        jar="D:\Users\Administrator\AndroidStudioProjects\sfk\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\18.0.0\classes.jar"
+        jar="E:\android\android\Git_sfk\sfk\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\18.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="8f11f56e350eacabf2273f646d981356eea0ed77">
-        <dex dex="D:\Users\Administrator\AndroidStudioProjects\sfk\app\build\intermediates\pre-dexed\debug\classes-389d1e4215eda4596b6ea697d5c098b87c26e808.jar" />
+        <dex dex="E:\android\android\Git_sfk\sfk\app\build\intermediates\pre-dexed\debug\classes-0d8928b1ae88c443b264a732985f66bb2a1d4420.jar" />
+    </item>
+    <item
+        jar="E:\android\android\Git_sfk\sfk\app\src\main\libs\android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="E:\android\android\Git_sfk\sfk\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.6-d44e712bfd65e10f533f4f505d0d61f263775e79.jar" />
     </item>
 
 </items>

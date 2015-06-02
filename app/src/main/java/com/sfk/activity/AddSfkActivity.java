@@ -1,15 +1,17 @@
 package com.sfk.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.*;
@@ -19,14 +21,15 @@ import org.apache.http.Header;
 import org.json.JSONObject;
 
 
-public class AddSfkActivity extends ActionBarActivity {
+public class AddSfkActivity extends Activity {
     private EditText ettitle,etinfo,etscontactway,etaccount,ettype,etlasttime,etyourgoods,etothermessage,etspeoplenum;
     private Spinner spstypesp,spprovinces,spsage,spcities,spsex;
     private ImageButton addImage,addSfk;
-    private ImageView imageView;
     private RequestParams params;
+    private TextView tpath;
+    private Button bchoice;
     private String title,tinfo,scontactway,account,stype,lasttime,yourgoods,othermessage,speoplenum,ssex,provinces,sage,cities,state,stime,sreleasetime;
-
+    public static final int FILE_RESULT_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,11 @@ public class AddSfkActivity extends ActionBarActivity {
         setContentView(R.layout.add_sfk);
         setView();
         getAddSfkInfo();
-        addSfkOnclick();
         setProvinces();
         setcities();
-
+        //图片上传
+        addSfkOnclick();
     }
-
-
     //处理省份下拉框的显示
     private void setProvinces(){
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.provinces, android.R.layout.simple_spinner_item);
@@ -125,7 +126,7 @@ public class AddSfkActivity extends ActionBarActivity {
                 }
 
                 spcities.setAdapter(cityAdapter);
-                provinces=spprovinces.getSelectedItem().toString();
+                provinces = spprovinces.getSelectedItem().toString();
                 Toast.makeText(getApplicationContext(), provinces, Toast.LENGTH_LONG).show();
             }
 
@@ -158,6 +159,17 @@ public class AddSfkActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(FILE_RESULT_CODE == requestCode){
+            Bundle bundle = null;
+            if(data!=null&&(bundle=data.getExtras())!=null){
+                tpath.setText("选择文件夹为："+bundle.getString("file"));
+            }
+        }
+    }
+
+
    //发布沙发按钮监听，向服务器发送发布的沙发信息
     private void addSfkOnclick(){
         addSfk.setOnClickListener(new View.OnClickListener() {
@@ -185,6 +197,7 @@ public class AddSfkActivity extends ActionBarActivity {
             }
         });
     }
+
     private void setView() {
         ettitle=(EditText)findViewById(R.id.title);
         etinfo=(EditText)findViewById(R.id.info);
@@ -203,7 +216,9 @@ public class AddSfkActivity extends ActionBarActivity {
         spsex=(Spinner)findViewById(R.id.ssex);
         addImage=(ImageButton)findViewById(R.id.upImage);
         addSfk=(ImageButton)findViewById(R.id.addsfk);
-        imageView=(ImageView)findViewById(R.id.imageView);
+        tpath=(TextView)findViewById(R.id.path);
+        bchoice=(Button)findViewById(R.id.choice);
+
 
         //获取填入要发布的沙发信息
         title=ettitle.getText().toString();

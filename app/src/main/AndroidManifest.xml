@@ -27,11 +27,6 @@
             android:name=".AddSfkActivity"
             android:label="@string/title_activity_add_sfk" >
         </activity>
-
-        <activity
-            android:name=".SfInfoActivity"
-            android:theme="@style/Transparent" >
-        </activity>
     </application>
 
 </manifest>
