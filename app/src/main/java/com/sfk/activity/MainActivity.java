@@ -6,15 +6,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.sfk.fragment.Panic_Fragment;
+import com.sfk.pojo.Sfk;
+import com.sfk.service.SeekSFService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
     private Fragment[] fragments;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private RadioButton[] radioButtons;
+    private List<Sfk> seekSFTopicList = new ArrayList<Sfk>();
+    private int panic_action=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,7 +66,13 @@ public class MainActivity extends ActionBarActivity {
                         fragmentTransaction.show(fragments[0]).commit();
                         break;
                     case R.id.panic_radioButton:    //抢沙发
+                        Panic_Fragment panic_fragments = (Panic_Fragment) fragments[1];
+                        if(panic_action==0){    //判断是否之前已加载该fragment数据，如没有就加载
+                            panic_fragments.loadFirstData();
+                            panic_action=1;
+                        }
                         fragmentTransaction.show(fragments[1]).commit();
+
                         break;
                     case R.id.bbs_radioButton:      //社区
                         fragmentTransaction.show(fragments[2]).commit();
