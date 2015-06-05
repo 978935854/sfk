@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true" android:color="@drawable/green_two"/>
     <item android:color="@drawable/dark_gray"/>
-</selector><!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/color/color_main_radiobutton.xml -->
+</selector><!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/color/color_main_radiobutton.xml -->

@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main"
+    android:orientation="vertical"
+    tools:context="com.example.root.sfk.Register">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffff0000"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="50dp"
+        android:digits="@string/et_digits"
+        android:hint="邮箱/手机"
+        android:textColorHint="#ffffffff"
+        android:textColor="#ffffffff"
+        android:background="@drawable/corners_bg"
+         />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="45dp"
+        android:hint="密码"
+        android:textColorHint="#ffffffff"
+        android:password="true"
+        android:textColor="#ffffffff"
+        android:background="@drawable/corners_bg"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="-3dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#ffffffff"
+            android:text="登录"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:background="@drawable/button01"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:text="注册"
+            android:textColor="#ffffffff"
+            android:background="@drawable/button02"
+            android:layout_marginRight="45dp"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_forgetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:text="忘记密码?"
+        android:textColor="#ffffffff" />
+
+
+</LinearLayout>
