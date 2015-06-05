@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.sfk.Constant.Constant;
 import com.sfk.activity.MainActivity;
 import com.sfk.activity.NetUtils;
 
@@ -35,7 +36,7 @@ public class RunPostToRegisterAsyncTask extends AsyncTask {
     protected Object doInBackground(Object[] params) {
         String result = NetUtils.loginOfPost(et_username.getText().toString(),
                 et_password.getText().toString(),
-                "http://192.168.1.121:8080/shaFaKe/customer/register!checkUserUsabilityAndRegister");
+                Constant.projectServicePath + "customer/register!checkUserUsabilityAndRegister");
         return result;
     }
 

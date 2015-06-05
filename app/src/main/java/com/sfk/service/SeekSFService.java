@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by Administrator on 2015/5/27.
@@ -32,51 +35,93 @@ public class SeekSFService {
 
     private Context context;
     BaseProtocolUtil baseProtocolUtil;
-    //获取沙发单列表
-    public List<Sfk> getSeekSFTopicList() throws InterruptedException {
-        GetSeekSFTopicListThread topicListThread  = new GetSeekSFTopicListThread();
-        topicListThread.start();
-        topicListThread.join();
-        return topicListThread.seekSFTopicList;
-    }
-    //获取所有沙发单
-    private class GetSeekSFTopicListThread extends Thread{
-        List<Sfk> seekSFTopicList;
-        public void run(){
-            seekSFTopicList = new ArrayList<Sfk>();
-            baseProtocolUtil = new BaseProtocolUtil();
-            try {
-                baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList");
-                String responseCode = baseProtocolUtil.parse();
-                if("error".equals(responseCode)){
-                    Message msg = new Message();
-                    boolean netState = isOpenNetwork(); //  检测网络是否正常
-                    if(netState){       //本地网络正常，证明服务器有问题
-                        msg.obj="serviceError";
-                    }else{              //服务器端正常，证明本地网络有问题
-                        msg.obj="locationError";
-                    }
-                    handler.sendMessage(msg);
-                }
+    List<Sfk> seekSFTopicList;
 
-                JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
-                for(int i=0;i<sfkArray.length();i++){
-                    Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
-                    seekSFTopicList.add(sfk);
+
+    //获取沙发单列表
+    public List<Sfk> getSeekSFTopicList() throws InterruptedException, ExecutionException {
+        FutureTask<List<Sfk>> getListFutureTask = new FutureTask<List<Sfk>>(new Callable<List<Sfk>>() {
+            @Override
+            public List<Sfk> call() throws Exception {
+                seekSFTopicList = new ArrayList<Sfk>();
+                baseProtocolUtil = new BaseProtocolUtil();
+                try {
+                    baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList");
+                    String responseCode = baseProtocolUtil.parse();
+                    if("error".equals(responseCode)){
+                        Message msg = new Message();
+                        boolean netState = isOpenNetwork(); //  检测网络是否正常
+                        if(netState){       //本地网络正常，证明服务器有问题
+                            msg.obj="serviceError";
+                        }else{              //服务器端正常，证明本地网络有问题
+                            msg.obj="locationError";
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
+                    for(int i=0;i<sfkArray.length();i++){
+                        Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
+                        seekSFTopicList.add(sfk);
+                    }
+                    Log.i("sfkList",seekSFTopicList.toString());
+                    return seekSFTopicList;
+                }catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                Log.i("sfkList",seekSFTopicList.toString());
-            }catch (JSONException e) {
-                e.printStackTrace();
+                return seekSFTopicList;
             }
-        }
+        });
+
+        new Thread(getListFutureTask).start();
+
+        return getListFutureTask.get();
     }
+
 
     //筛选条件，获取沙发单
-    public List<Sfk> getSeekSFTopicListBySfk(Sfk sfk) throws InterruptedException {
-        GetSeekSFTopicListBySfkThread topicListThread  = new GetSeekSFTopicListBySfkThread(sfk);
-        topicListThread.start();
-        topicListThread.join();
-        return topicListThread.seekSFTopicList;
+    public List<Sfk> getSeekSFTopicListBySfk(final Sfk sfk) throws InterruptedException, ExecutionException {
+
+        FutureTask<List<Sfk>> getListFutureTask = new FutureTask<List<Sfk>>(
+                new Callable<List<Sfk>>() {
+                    @Override
+                    public List<Sfk> call() throws Exception {
+                        seekSFTopicList = new ArrayList<Sfk>();
+                        baseProtocolUtil = new BaseProtocolUtil();
+                        try {
+                            baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
+                                            +"sfk.ssex="+sfk.getSsex()+"&"
+                                            +"sfk.saddress="+sfk.getSaddress()+"&"
+                                            +"sfk.speoplenum="+sfk.getSpeoplenum()
+                            );
+                            String responseCode = baseProtocolUtil.parse();
+                            if("error".equals(responseCode)){
+                                Message msg = new Message();
+                                boolean netState = isOpenNetwork(); //  检测网络是否正常
+                                if(netState){       //本地网络正常，证明服务器有问题
+                                    msg.obj="serviceError";
+                                }else{              //服务器端正常，证明本地网络有问题
+                                    msg.obj="locationError";
+                                }
+                                handler.sendMessage(msg);
+                            }
+                            JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
+                            for(int i=0;i<sfkArray.length();i++){
+                                Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
+                                seekSFTopicList.add(sfk);
+                            }
+                        return seekSFTopicList;
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        return seekSFTopicList;
+                    }
+                }
+        );
+
+        new Thread(getListFutureTask).start();
+        return getListFutureTask.get();
     }
 
     //筛选条件，获取沙发单

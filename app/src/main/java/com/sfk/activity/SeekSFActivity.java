@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -28,6 +29,7 @@ import com.sfk.service.SeekSFService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Administrator on 2015/5/27.
@@ -47,6 +49,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.seek_sf_topic);
+        Log.i("currenttime",System.currentTimeMillis()+"");
         //注册接收选择器的参数
         registerReceiver(new PickerSendBroadcast(), filter);
 
@@ -72,10 +75,14 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     private void loadFirstData() {
         seekSFService = new SeekSFService(this);
         //获取沙发单列表
-        try {
+        try {long time_1 = System.currentTimeMillis();
             seekSFTopicList = seekSFService.getSeekSFTopicList();
+            long time_2 = System.currentTimeMillis();
+            Log.i("currenttime",(time_2-time_1)+"");
         } catch (InterruptedException e) {
             Log.i("InterruptedException2","InterruptedException");
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         //list
@@ -123,8 +130,10 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         public void onReceive(Context context, Intent intent) {
             RelativeLayout select_refresh_relativeLayout = (RelativeLayout) findViewById(R.id.select_to_refresh_head);
             select_refresh_relativeLayout.setVisibility(View.VISIBLE);
+            Log.i("select_refresht",select_refresh_relativeLayout.getVisibility()+"");
             loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
             select_refresh_relativeLayout.setVisibility(View.GONE);
+            Log.i("select_refresht",select_refresh_relativeLayout.getVisibility()+"");
         }
     }
     //根据顶部搜索条件，加载listview菜单新数据
@@ -161,13 +170,16 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         }
 
         try {
-            seek_sf_topic_listView.addHeaderView(load_data_view);//添加listview加载数据进度条
             seekSFTopicList.clear();                            //清除原有的listview数据源
+            long time_1 = System.currentTimeMillis();
             List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
+            long time_2 = System.currentTimeMillis();
+            Log.i("currenttime_2",time_2-time_1+"");
             seekSFTopicList.addAll(sfkList);                    //listview数据源更新
             adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
-            seek_sf_topic_listView.removeHeaderView(load_data_view);//加载完listview数据，关闭数据进度条
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
@@ -178,7 +190,14 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         Intent intent=new Intent();
         intent.setClass(this,SfInfoActivity.class);
         startActivity(intent);
+    }
 
+    //监听返回键，若返回直接关闭该activity
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK && event.getRepeatCount()==0){
+            finish();
+        }
+        return true;
     }
 
 }

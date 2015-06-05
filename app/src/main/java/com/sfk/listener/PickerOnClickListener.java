@@ -35,6 +35,7 @@ public class PickerOnClickListener implements View.OnClickListener{
         PickerView picker_View = (PickerView) pickerView.findViewById(R.id.picker_view);
         picker_View.setData(dataList);
         pickerDialog();
+
         selectedText = dataList.get(dataList.size() / 2);
         picker_View.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
