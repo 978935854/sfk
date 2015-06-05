@@ -10,14 +10,18 @@ import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.sfk.service.BBSservice;
+
 public class MainActivity extends ActionBarActivity {
     private Fragment[] fragments;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private RadioButton[] radioButtons;
+    BBSservice bbSservice=new BBSservice(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
         SharedPreferences spf = getSharedPreferences("LOGIN_STATUS", 0);
@@ -58,7 +62,15 @@ public class MainActivity extends ActionBarActivity {
                     case R.id.panic_radioButton:    //抢沙发
                         fragmentTransaction.show(fragments[1]).commit();
                         break;
-                    case R.id.bbs_radioButton:      //社区
+                    case R.id.bbs_radioButton:
+                        if(bbSservice.alreadUpdate) {
+
+                            try {
+                                bbSservice.bbsService();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }//社区
                         fragmentTransaction.show(fragments[2]).commit();
                         break;
                     case R.id.person_radioButton:   //个人管理
