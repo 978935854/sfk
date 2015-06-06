@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,9 +90,11 @@ public class SeekSFService {
                         seekSFTopicList = new ArrayList<Sfk>();
                         baseProtocolUtil = new BaseProtocolUtil();
                         try {
+                            String saddress = URLEncoder.encode(sfk.getSaddress(),"UTF-8");
+                            Log.i("saddress22",saddress);
                             baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
                                             +"sfk.ssex="+sfk.getSsex()+"&"
-                                            +"sfk.saddress="+sfk.getSaddress()+"&"
+                                            +"sfk.saddress="+saddress+"&"
                                             +"sfk.speoplenum="+sfk.getSpeoplenum()
                             );
                             String responseCode = baseProtocolUtil.parse();
@@ -135,9 +138,11 @@ public class SeekSFService {
             seekSFTopicList = new ArrayList<Sfk>();
             baseProtocolUtil = new BaseProtocolUtil();
             try {
+                String saddress = URLEncoder.encode(sfk.getSaddress(),"UTF-8");
+                Log.i("saddress22",saddress);
                 baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
                         +"sfk.ssex="+sfk.getSsex()+"&"
-                        +"sfk.saddress="+sfk.getSaddress()+"&"
+                        +"sfk.saddress="+saddress+"&"
                         +"sfk.speoplenum="+sfk.getSpeoplenum()
                 );
                 String responseCode = baseProtocolUtil.parse();
@@ -158,6 +163,8 @@ public class SeekSFService {
                 }
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
