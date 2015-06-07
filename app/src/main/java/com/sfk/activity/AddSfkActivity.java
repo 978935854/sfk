@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.loopj.android.http.*;
 import com.sfk.utils.AddressUtil;
 import com.sfk.utils.AsyncHttpClientUtil;
-import com.sfk.utils.Scenic_AddressUtil;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
@@ -49,8 +48,8 @@ public class AddSfkActivity extends Activity {
      * 处理省份下拉框的显示
      */
     private void setProvinces(){
-        Scenic_AddressUtil scenic_AddressUtil=new Scenic_AddressUtil(AddSfkActivity.this);
-        scenic_AddressUtil.scenic_address(spprovinces, spcities);
+        AddressUtil addressUtil=new AddressUtil(AddSfkActivity.this);
+        addressUtil.address(spprovinces, spcities);
         //addressUtil.setcities();
     }
 
