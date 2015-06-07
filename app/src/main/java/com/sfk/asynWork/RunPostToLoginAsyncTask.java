@@ -1,5 +1,6 @@
 package com.sfk.asynWork;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.sfk.Constant.Constant;
 import com.sfk.activity.MainActivity;
 import com.sfk.activity.NetUtils;
+import com.sfk.application.LoginAplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +21,7 @@ import org.json.JSONObject;
 /**
  * Created by root on 5/17/15.
  */
-public class RunPostToLoginAsyncTask extends AsyncTask{
+public class RunPostToLoginAsyncTask extends AsyncTask<String, String, String>{
     private Context context;
     private EditText et_username, et_password;
     private TextView tv_info;
@@ -32,7 +34,7 @@ public class RunPostToLoginAsyncTask extends AsyncTask{
     }
 
     @Override
-    protected Object doInBackground(Object[] params) {
+    protected String doInBackground(String[] params) {
         String result = NetUtils.loginOfPost(et_username.getText().toString(),
                 et_password.getText().toString(),
                 Constant.projectServicePath + "customer/login!login");
@@ -42,12 +44,12 @@ public class RunPostToLoginAsyncTask extends AsyncTask{
     }
 
     @Override
-    protected void onPostExecute(Object o) {
-        super.onPostExecute(o);
-        String info = (String) o;
+    protected void onPostExecute(String str) {
+        super.onPostExecute(str);
         try {
-            JSONObject jsonObject = new JSONObject(info);
-            int num = jsonObject.getInt("info");
+            JSONObject jsonObject = new JSONObject(str);
+            JSONObject object = jsonObject.getJSONObject("personal_data");
+            int num = jsonObject.getInt("status");
             switch (num) {
                 case 200:
                     tv_info.setText("登录成功！");
@@ -55,6 +57,10 @@ public class RunPostToLoginAsyncTask extends AsyncTask{
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("username", jsonObject.getString("username"));
                     editor.commit();
+                    LoginAplication personalApp = new LoginAplication();
+                    personalApp.setCid(object.getInt("cid"));
+                    personalApp.setCemail(object.getString("cemail"));
+                    personalApp.setCtelnum(object.getString("ctelnum"));
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                     break;
