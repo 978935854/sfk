@@ -30,6 +30,8 @@
         <item name="android:layout_marginLeft">6dp</item>
     </style>
 
-
+    <style name="sf_info_text_2">
+        <item name="android:background">@null</item>
+    </style>
 
 </resources>

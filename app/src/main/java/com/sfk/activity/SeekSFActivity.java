@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.sfk.UI.PickerView;
 import com.sfk.UI.RefreshableView;
 import com.sfk.adapter.Seek_sf_topic_adapter;
+import com.sfk.listener.AddressOnClickListener;
 import com.sfk.listener.PickerOnClickListener;
 import com.sfk.pojo.Sfk;
 import com.sfk.service.SeekSFService;
@@ -106,7 +107,9 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         sex_btn = (Button) findViewById(R.id.sex_btn);
         address_btn = (Button) findViewById(R.id.address_btn);
         peopleNum_btn = (Button) findViewById(R.id.peopleNum_btn);
-
+        //点击地点事件
+        address_btn.setOnClickListener(new AddressOnClickListener(this,address_btn));
+        //点击性别事件
         PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(this,dataList,sex_btn);
         sex_btn.setOnClickListener(pickerOnClickListener);
 
@@ -163,7 +166,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             sfk.setSpeoplenum(4);
         }
 
-        if("地点".equals(address_btn.getText())){
+        if("地点(全部)".equals(address_btn.getText())){
             sfk.setSaddress("");
         }else {
             sfk.setSaddress(address_btn.getText().toString());

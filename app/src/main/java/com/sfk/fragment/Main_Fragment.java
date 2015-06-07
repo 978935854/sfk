@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.sfk.activity.AddSfkActivity;
 import com.sfk.activity.R;
 import com.sfk.activity.SeekSFActivity;
 
@@ -34,7 +35,8 @@ public class Main_Fragment extends Fragment {
         releaseSF_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), AddSfkActivity.class);
+                startActivity(intent);
             }
         });
         return view;
