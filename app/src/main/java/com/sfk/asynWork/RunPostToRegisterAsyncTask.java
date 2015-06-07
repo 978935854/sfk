@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.sfk.Constant.Constant;
 import com.sfk.activity.MainActivity;
 import com.sfk.activity.NetUtils;
+import com.sfk.application.LoginAplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 /**
  * Created by root on 5/17/15.
  */
-public class RunPostToRegisterAsyncTask extends AsyncTask {
+public class RunPostToRegisterAsyncTask extends AsyncTask<String, String, String> {
     private Context context;
     private EditText et_username, et_password;
     private TextView tv_info;
@@ -33,7 +34,7 @@ public class RunPostToRegisterAsyncTask extends AsyncTask {
     }
 
     @Override
-    protected Object doInBackground(Object[] params) {
+    protected String doInBackground(String[] params) {
         String result = NetUtils.loginOfPost(et_username.getText().toString(),
                 et_password.getText().toString(),
                 Constant.projectServicePath + "customer/register!checkUserUsabilityAndRegister");
@@ -41,19 +42,24 @@ public class RunPostToRegisterAsyncTask extends AsyncTask {
     }
 
     @Override
-    protected void onPostExecute(Object o) {
-        super.onPostExecute(o);
-        String info = (String) o;
+    protected void onPostExecute(String str) {
+        super.onPostExecute(str);
         try {
-            JSONObject jsonObject = new JSONObject(info);
-            int num = jsonObject.getInt("info");
+            JSONObject jsonObject = new JSONObject(str);
+            JSONObject object = jsonObject.getJSONObject("personal_data");
+            Log.i("gggg", object.toString());
+            int num = jsonObject.getInt("status");
             switch (num) {
                 case 200:
                     tv_info.setText("注册成功！");
                     SharedPreferences spf = context.getSharedPreferences("LOGIN_STATUS", 0);
                     SharedPreferences.Editor editor = spf.edit();
-                    editor.putString("username", jsonObject.getString("username"));
+                    editor.putString("username", object.getString("cemail"));
                     editor.commit();
+                    LoginAplication loginAplication = new LoginAplication();
+                    loginAplication.setCid(object.getInt("cid"));
+                    loginAplication.setCtelnum(object.getString("ctelnum"));
+                    loginAplication.setCemail(object.getString("cemail"));
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                     break;
