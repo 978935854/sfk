@@ -15,7 +15,7 @@ import com.sfk.activity.R;
 public class AddressUtil {
     private Context context;
     private Spinner spprovinces,spcities;
-    public String cities,provinces=null;
+    public String cities=null,provinces=null;
     public AddressUtil(Context context) {
         this.context = context;
     }
@@ -128,13 +128,20 @@ public class AddressUtil {
 
     }
     //监听市下拉框，获取选取内容
-    private String setcities() {
+    public String setcities() {
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(context, R.array.provinces, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spcities.setAdapter(adapter);
         spcities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long l) {
+                ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(context, R.array.beijing, android.R.layout.simple_spinner_dropdown_item);
                 //获取选择的市的值
-                cities=adapter.getItemAtPosition(position).toString();
-//                Toast.makeText(context, cities, Toast.LENGTH_LONG).show();
+                cities = adapter.getItemAtPosition(position).toString();
+                //Toast.makeText(context, cities, Toast.LENGTH_LONG).show();
+                Spinner spinner = (Spinner) adapter;
+                String pro = (String) spinner.getItemAtPosition(position);
+                Toast.makeText(context, pro, Toast.LENGTH_LONG).show();
             }
 
             @Override
