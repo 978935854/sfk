@@ -32,11 +32,6 @@
                 android:ems="100"
                 android:id="@+id/scontactway" />
 
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/type_sfk"
-                android:id="@+id/type" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -130,11 +125,13 @@
                     android:id="@+id/textView5" />
 
                 <Spinner
-                    android:layout_width="80dp"
+                    android:layout_width="180dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/provinces" />
+
+
                 <Spinner
-                    android:layout_width="80dp"
+                    android:layout_width="180dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/cities" />
 
