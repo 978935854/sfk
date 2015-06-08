@@ -129,9 +129,6 @@ public class Scenic_AddressUtil {
     }
     //监听市下拉框，获取选取内容
     private String setcities() {
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(context, R.array.provinces, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sscenic.setAdapter(adapter);
         sscenic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long l) {
