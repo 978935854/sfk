@@ -1,5 +1,6 @@
 package com.sfk.asynWork;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,13 +25,15 @@ public class RunPostToRegisterAsyncTask extends AsyncTask<String, String, String
     private Context context;
     private EditText et_username, et_password;
     private TextView tv_info;
+    private Application application;
 
     public RunPostToRegisterAsyncTask(Context context, EditText et_username,
-                                      EditText et_password, TextView tv_info) {
+                                      EditText et_password, TextView tv_info, Application application) {
         this.context = context;
         this.et_username = et_username;
         this.et_password = et_password;
         this.tv_info = tv_info;
+        this.application = application;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class RunPostToRegisterAsyncTask extends AsyncTask<String, String, String
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("username", object.getString("cemail"));
                     editor.commit();
-                    LoginAplication loginAplication = new LoginAplication();
+                    LoginAplication loginAplication = (LoginAplication) application;
                     loginAplication.setCid(object.getInt("cid"));
                     loginAplication.setCtelnum(object.getString("ctelnum"));
                     loginAplication.setCemail(object.getString("cemail"));
