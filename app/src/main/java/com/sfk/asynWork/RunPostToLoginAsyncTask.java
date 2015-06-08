@@ -27,7 +27,7 @@ public class RunPostToLoginAsyncTask extends AsyncTask<String, String, String>{
     private TextView tv_info;
     private Application application;
 
-    public RunPostToLoginAsyncTask(Context context, EditText et_username, EditText et_password, TextView tv_info) {
+    public RunPostToLoginAsyncTask(Context context, EditText et_username, EditText et_password, TextView tv_info, Application application) {
         this.context = context;
         this.et_username = et_username;
         this.et_password = et_password;
