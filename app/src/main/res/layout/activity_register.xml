@@ -1,14 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main"
-    android:orientation="vertical"
-    tools:context="com.example.root.sfk.Register">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="410dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
         android:orientation="vertical">
 
         <TextView
@@ -19,66 +18,80 @@
             android:gravity="center"
             android:textColor="#ffffffff"
             android:visibility="gone" />
+
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/et_username"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginRight="50dp"
-        android:digits="@string/et_digits"
-        android:hint="邮箱/手机"
-        android:textColorHint="#ffffffff"
-        android:textColor="#ffffffff"
-        android:background="@drawable/corners_bg"
-         />
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="45dp"
-        android:hint="密码"
-        android:textColorHint="#ffffffff"
-        android:password="true"
-        android:textColor="#ffffffff"
-        android:background="@drawable/corners_bg"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="-3dp"
-        android:layout_height="30dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:digits="@string/et_digits"
+            android:hint="邮箱/手机"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="40dp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="密码"
+            android:password="true"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="-8dp">
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:textColor="#ffffffff"
-            android:text="登录"
+            android:background="@drawable/button01"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:background="@drawable/button01"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="5dp"/>
+            android:text="登录"
+            android:textColor="#ffffffff"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="2dp" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/button02"
             android:gravity="left"
             android:paddingLeft="5dp"
-            android:layout_weight="1"
             android:text="注册"
             android:textColor="#ffffffff"
-            android:background="@drawable/button02"
-            android:layout_marginRight="45dp"
-            />
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="3dp" />
     </LinearLayout>
 
 

@@ -25,16 +25,19 @@ public class RunPostToLoginAsyncTask extends AsyncTask<String, String, String>{
     private Context context;
     private EditText et_username, et_password;
     private TextView tv_info;
+    private Application application;
 
     public RunPostToLoginAsyncTask(Context context, EditText et_username, EditText et_password, TextView tv_info) {
         this.context = context;
         this.et_username = et_username;
         this.et_password = et_password;
         this.tv_info = tv_info;
+        this.application = application;
     }
 
     @Override
     protected String doInBackground(String[] params) {
+
         String result = NetUtils.loginOfPost(et_username.getText().toString(),
                 et_password.getText().toString(),
                 Constant.projectServicePath + "customer/login!login");
@@ -55,9 +58,9 @@ public class RunPostToLoginAsyncTask extends AsyncTask<String, String, String>{
                     tv_info.setText("登录成功！");
                     SharedPreferences spf = context.getSharedPreferences("LOGIN_STATUS", 0);
                     SharedPreferences.Editor editor = spf.edit();
-                    editor.putString("username", jsonObject.getString("username"));
+                    editor.putString("username", object.getString("cemail"));
                     editor.commit();
-                    LoginAplication personalApp = new LoginAplication();
+                    LoginAplication personalApp = (LoginAplication) application;
                     personalApp.setCid(object.getInt("cid"));
                     personalApp.setCemail(object.getString("cemail"));
                     personalApp.setCtelnum(object.getString("ctelnum"));
