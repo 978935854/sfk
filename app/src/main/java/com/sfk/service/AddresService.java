@@ -1,6 +1,7 @@
-package com.sfk.utils;
+package com.sfk.service;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,28 +11,24 @@ import android.widget.Toast;
 import com.sfk.activity.R;
 
 /**
- * Created by Administrator on 2015/6/5.
+ * Created by WEI on 2015/5/31.
  */
-public class AddressUtil {
+public class AddresService {
     private Context context;
-    private Spinner spprovinces,spcities;
-    public String cities=null,provinces=null;
-    public AddressUtil(Context context) {
+    private Spinner spprovinces;
+    private Spinner spcities;
+    String provinces;
+
+
+    public AddresService(Context context, Spinner spprovinces, Spinner spcities) {
         this.context = context;
+        this.spprovinces = spprovinces;
+        this.spcities = spcities;
     }
 
-    public void address(Spinner spprovinces, Spinner spcities){
-        this.spprovinces=spprovinces;
-        this.spcities=spcities;
-        //处理省份下拉框的显示
-        setProvinces();
-        //处理城市下拉框的显示
-        setcities();
-    }
+    public String setProvinces() {
 
-    //处理省份下拉框的显示
-    private void setProvinces(){
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(context, R.array.provinces, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.provinces, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spprovinces.setAdapter(adapter);
         spprovinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -111,10 +108,10 @@ public class AddressUtil {
                 } else if (pro.equals("澳门特别行政区")) {
                     cityAdapter = ArrayAdapter.createFromResource(context, R.array.aomeng, android.R.layout.simple_spinner_dropdown_item);
                 }
-
+                Log.i("cityAdapter,",cityAdapter.getCount()+"");
                 spcities.setAdapter(cityAdapter);
-                provinces=spprovinces.getSelectedItem().toString();
-                Toast.makeText(context, provinces, Toast.LENGTH_LONG).show();
+
+                //Toast.makeText(getApplicationContext(), provinces, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -126,22 +123,22 @@ public class AddressUtil {
         });
 
 
+        provinces = spprovinces.getSelectedItem().toString();
+        Log.i("provinces",provinces);
+        return provinces;
     }
+
+    String cities;
     //监听市下拉框，获取选取内容
     public String setcities() {
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(context, R.array.provinces, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spcities.setAdapter(adapter);
+
         spcities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long l) {
-                ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(context, R.array.beijing, android.R.layout.simple_spinner_dropdown_item);
                 //获取选择的市的值
-                cities = adapter.getItemAtPosition(position).toString();
-                //Toast.makeText(context, cities, Toast.LENGTH_LONG).show();
-                Spinner spinner = (Spinner) adapter;
-                String pro = (String) spinner.getItemAtPosition(position);
-                Toast.makeText(context, pro, Toast.LENGTH_LONG).show();
+                 cities = adapter.getItemAtPosition(position).toString();
+                //Toast.makeText(getApplicationContext(), cities, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -150,6 +147,7 @@ public class AddressUtil {
             }
         });
         return cities;
+
     }
 
 }

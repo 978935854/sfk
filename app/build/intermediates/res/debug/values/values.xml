@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="actionBarDivider"/>
     <attr format="reference" name="actionBarItemBackground"/>
@@ -106,13 +106,13 @@
     <dimen name="abc_panel_menu_list_width">296dp</dimen>
     <dimen name="abc_search_view_preferred_width">320dip</dimen>
     <dimen name="abc_search_view_text_min_width">160dip</dimen>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bbs_topicTitle_textSize">18dip</dimen>
     <dimen name="bbs_user_time_textSize">12dip</dimen>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <drawable name="black">#000000</drawable>
     <drawable name="blue">#2A00FF</drawable>
@@ -121,19 +121,22 @@
     <drawable name="green">#f0f0</drawable>
     <drawable name="green_two">#42a664</drawable>
     <drawable name="light_gray">#EEEEEE</drawable>
+    <drawable name="other">#fff00f</drawable>
     <drawable name="white">#FFFFFF</drawable>
     <drawable name="yellow">#FFFEA4</drawable>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="home" type="id"/>
     <integer name="abc_max_action_buttons">2</integer>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="Choice">选择图片上传路径</string>
+    <string name="MyFileManager">MyFileManager</string>
     <string name="ReleaseSF">发布沙发</string>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
@@ -148,22 +151,21 @@
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="account_sfk">沙发帖子内容</string>
     <string name="action_settings">Settings</string>
     <string name="addSfk">发布沙发</string>
     <string name="app_name">沙发客</string>
     <string name="bbs">社区</string>
-    <string name="et_digits">1234567890.@comnqqutlkgai</string>
     <string name="hello_world">Hello world!</string>
     <string name="info_sfk">沙发描述</string>
     <string name="lasttime_sfk">时间限制</string>
     <string name="main">首页</string>
     <string name="othermessage_sfk">其他信息</string>
     <string name="panic">抢沙发</string>
+    <string name="path">路径显示</string>
     <string name="person">我的</string>
-    <string name="register">沙发客登录注册</string>
     <string name="saddress_sfk">沙发地点</string>
     <string name="sage_sfk">年龄限制</string>
     <string name="scontactway_sfk">联系方式</string>
@@ -173,11 +175,10 @@
     <string name="ssex_sfk">性别限制</string>
     <string name="stype_sfk">帖子类型</string>
     <string name="title_activity_add_sfk">AddSfkActivity</string>
-    <string name="title_activity_register">Register</string>
     <string name="title_sfk">沙发帖子标题</string>
     <string name="type_sfk">沙发类型</string>
     <string name="yourgoods_sfk">自带物品</string>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
@@ -189,7 +190,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat.Base.CompactMenu.Dialog" parent="android:TextAppearance.Medium">
         <item name="android:textColor">@android:color/primary_text_light</item>
@@ -505,13 +506,13 @@
         <item name="listChoiceBackgroundIndicator">@drawable/abc_list_selector_holo_dark</item>
     </style>
     <style name="Theme.Base.Light" parent="android:Theme.Light"/>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="Transparent" parent="android:Theme.Light">
         <!--将Activity的Theme设置成透明-->
         <item name="android:windowIsTranslucent">true</item>
     </style>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Widget.AppCompat.Base.ActionBar"/>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Widget.AppCompat.Base.ActionBar.Solid"/>
@@ -717,7 +718,7 @@
     <style name="Widget.AppCompat.ProgressBar" parent="Widget.AppCompat.Base.ProgressBar"/>
     <style name="Widget.AppCompat.ProgressBar.Horizontal" parent="Widget.AppCompat.Base.ProgressBar.Horizontal"/>
     <style name="Widget.AppCompat.Spinner.DropDown.ActionBar" parent="Widget.AppCompat.Base.Spinner"/>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <style name="rg_btn_style">
         <item name="android:button">@null</item>
@@ -728,14 +729,5 @@
         <item name="android:drawablePadding">4dip</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
-    <!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="sf_info_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">20dp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_marginLeft">6dp</item>
     </style>
 </resources>
