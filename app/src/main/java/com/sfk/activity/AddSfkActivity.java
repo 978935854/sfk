@@ -5,15 +5,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,19 +53,19 @@ public class AddSfkActivity extends Activity {
     private String author;
     private int size;
     private FinalHttp finalHttp;
-    IntentFilter intentFilter = new IntentFilter("com.wei");
-
+    private LinearLayout imagesLaout;
+    ImageView imageView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_sfk);
-        registerReceiver(new MyBroadcastReciver(), intentFilter);
         setView();
         setProvinces();
         getSfkinfo();
         getAddSfkInfo();
         choiceImage();
         addSfkOnclick();
+
     }
 
     /**
@@ -71,40 +77,39 @@ public class AddSfkActivity extends Activity {
         //addressUtil.setcities();
     }
 
-    /**
-     * 接收选中图片的路径广播
-     */
-    private class MyBroadcastReciver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(action.equals("com.wei")) {
-                author = intent.getStringExtra("path");
-                String str=intent.getStringExtra("size");
-                size=Integer.parseInt(str);
-                //uploadBT.setText(author);
-                //在android端显示接收到的广播内容
-                //Toast.makeText(MainActivity.this, author, 1).show();
-                //Toast.makeText(MainActivity.this, size+"", 1).show();
-                //在结束时可取消广播
-                //MainActivity.this.unregisterReceiver(this);
-            }
-        }
-    }
 
     /**
      * 选择图片按钮监听
      */
     private void choiceImage(){
-        //显示选择上传的图片
-        if(author!=null){
+        intent=getIntent();
+        if(intent.getExtras()!=null){
+            Bundle bundle=intent.getExtras();
+            author=bundle.getString("author");
+            size=bundle.getInt("size");
+
+            Log.i("author------------------",author+"");
+            Log.i("size--------------------",size+"");
+
             String att=author.substring(author.indexOf("[")+1,author.indexOf("]"));
             String a[]=att.split(",");
+            //Log.i("attttttttttttttttttttttt",author);
             for(int i=0;i<size;i++){
-                ImageView imageView=new ImageButton(this);
-                a[i].trim();
+                imageView=new ImageView(AddSfkActivity.this);
+                File file=new File(a[i].trim());
+                ViewGroup.LayoutParams para;
+                if(file.exists()){
+                    Bitmap bitmap=BitmapFactory.decodeFile(a[i].trim());
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setMaxHeight(50);
+                    imageView.setMaxWidth(50);
+
+                    imageView.setImageBitmap(bitmap);
+                    imagesLaout.addView(imageView);
+                }
             }
         }
+
         bchoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +117,7 @@ public class AddSfkActivity extends Activity {
                 intent.setClass(AddSfkActivity.this, com.sfk.uploadFile.activity.MainActivity.class);
                 startActivity(intent);
             }
+
         });
     }
 
@@ -219,6 +225,8 @@ public class AddSfkActivity extends Activity {
         addSfk=(ImageButton)findViewById(R.id.addsfk);
         //tpath=(TextView)findViewById(R.id.path);
         bchoice=(Button)findViewById(R.id.choice);
+        imagesLaout=(LinearLayout)findViewById(R.id.imagesLayout);
+
     }
 
     /**
@@ -238,6 +246,7 @@ public class AddSfkActivity extends Activity {
         sage=spsage.getSelectedItem().toString();
         ssex=spsex.getSelectedItem().toString();
         stype=spstypesp.getSelectedItem().toString();
+
     }
 
 
