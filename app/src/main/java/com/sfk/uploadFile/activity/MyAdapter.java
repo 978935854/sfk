@@ -50,11 +50,15 @@ public class MyAdapter extends CommonAdapter<String>
 		
 		final ImageView mImageView = helper.getView(R.id.id_item_image);
 		final ImageView mSelect = helper.getView(R.id.id_item_select);
-		
+
+
+		mSelectedImage.remove(mDirPath + "/" + item);
+		mSelect.setImageResource(R.drawable.picture_unselected);
 		mImageView.setColorFilter(null);
 		//设置ImageView的点击事件
 		mImageView.setOnClickListener(new OnClickListener()
 		{
+
 			//选择，则将图片变暗，反之则反之
 			@Override
 			public void onClick(View v)
@@ -77,10 +81,10 @@ public class MyAdapter extends CommonAdapter<String>
 						mSelectedImage.add(mDirPath + "/" + item);
 						mSelect.setImageResource(R.drawable.pictures_selected);
 						mImageView.setColorFilter(Color.parseColor("#77000000"));
-						intent=new Intent();
+						intent = new Intent();
 						intent.setAction("com.wei");
 						intent.putExtra("path", mSelectedImage.toString());
-						intent.putExtra("size", mSelectedImage.size()+"");
+						intent.putExtra("size", mSelectedImage.size() + "");
 						num++;
 					}
 					context.sendBroadcast(intent);

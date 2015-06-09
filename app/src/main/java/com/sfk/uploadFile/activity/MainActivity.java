@@ -149,7 +149,7 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 		// 设置选择文件夹的回调
 		mListImageDirPopupWindow.setOnImageDirSelected(this);
 	}
-	//IntentFilter intentFilter = new IntentFilter("com.wei");
+	IntentFilter intentFilter = new IntentFilter("com.wei");
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -159,7 +159,7 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 		DisplayMetrics outMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
 		mScreenHeight = outMetrics.heightPixels;
-		//registerReceiver(new MyBroadcastReciver(), intentFilter);
+		registerReceiver(new MyBroadcastReciver(), intentFilter);
 		initView();
 		getImages();
 		initEvent();
@@ -175,12 +175,14 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 				intent = new Intent();
 				bundle = new Bundle();
 				intent.setClass(com.sfk.uploadFile.activity.MainActivity.this, AddSfkActivity.class);
+				intent.putExtra("author", author);
+				intent.putExtra("size", size);
 				startActivity(intent);
 			}
 		});
 	}
-	
-	
+
+
 	/*
 	 private void uploadBTClick() {
 		 uploadBT.setOnClickListener(new OnClickListener() {
@@ -244,7 +246,7 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 	 
 	 
 	 
-	/*
+
 	private class MyBroadcastReciver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -261,7 +263,7 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 				//MainActivity.this.unregisterReceiver(this);
 			}
 		}
-	}*/
+	}
 	
 
 	/**
