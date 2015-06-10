@@ -114,7 +114,7 @@ public class AddressUtil {
 
                 spcities.setAdapter(cityAdapter);
                 provinces=spprovinces.getSelectedItem().toString();
-                Toast.makeText(context, provinces, Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, provinces, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -141,7 +141,7 @@ public class AddressUtil {
                 //Toast.makeText(context, cities, Toast.LENGTH_LONG).show();
                 Spinner spinner = (Spinner) adapter;
                 String pro = (String) spinner.getItemAtPosition(position);
-                Toast.makeText(context, pro, Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, pro, Toast.LENGTH_LONG).show();
             }
 
             @Override
