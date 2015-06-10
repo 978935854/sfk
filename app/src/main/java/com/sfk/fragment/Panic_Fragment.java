@@ -189,7 +189,8 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //list监听
         Intent intent=new Intent();
-        intent.setClass(getActivity(),SfInfoActivity.class);
+        intent.setClass(getActivity(), SfInfoActivity.class);
+        intent.putExtra("sfinfoID", seekSFTopicList.get(position).getSid());
         startActivity(intent);
 
     }

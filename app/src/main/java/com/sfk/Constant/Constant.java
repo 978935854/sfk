@@ -3,6 +3,7 @@ package com.sfk.Constant;
 public class Constant {
 
     //项目服务器的连接
-    public static final String projectServicePath = "http://192.168.1.116:8080/shaFaKe/";
+
+    public static final String projectServicePath = "http://192.168.103.1:8080/shaFaKe/";
 
 }

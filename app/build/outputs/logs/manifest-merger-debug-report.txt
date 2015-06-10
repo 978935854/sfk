@@ -38,34 +38,36 @@ MERGED from com.android.support:appcompat-v7:18.0.0:19:5
 activity#com.sfk.activity.SeekSFActivity
 ADDED from AndroidManifest.xml:16:9
 	android:theme
+		ADDED from AndroidManifest.xml:18:13
+	android:name
 		ADDED from AndroidManifest.xml:17:13
-	android:name
-		ADDED from AndroidManifest.xml:16:19
 activity#com.sfk.activity.MainActivity
-ADDED from AndroidManifest.xml:18:9
+ADDED from AndroidManifest.xml:19:9
 	android:label
+		ADDED from AndroidManifest.xml:21:13
+	android:name
 		ADDED from AndroidManifest.xml:20:13
-	android:name
-		ADDED from AndroidManifest.xml:19:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:21:13
+ADDED from AndroidManifest.xml:22:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:22:17
-	android:name
-		ADDED from AndroidManifest.xml:22:25
-category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:23:17
 	android:name
-		ADDED from AndroidManifest.xml:23:27
+		ADDED from AndroidManifest.xml:23:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:24:17
+	android:name
+		ADDED from AndroidManifest.xml:24:27
 activity#com.sfk.activity.AddSfkActivity
-ADDED from AndroidManifest.xml:26:9
+ADDED from AndroidManifest.xml:27:9
 	android:label
+		ADDED from AndroidManifest.xml:29:13
+	android:name
 		ADDED from AndroidManifest.xml:28:13
+activity#com.sfk.activity.Register
+ADDED from AndroidManifest.xml:30:9
 	android:name
-		ADDED from AndroidManifest.xml:27:13
-activity#com.sfk.activity.MyFileManager
+		ADDED from AndroidManifest.xml:30:19
+activity#com.sfk.activity.SfInfoActivity
 ADDED from AndroidManifest.xml:31:9
-	android:label
-		ADDED from AndroidManifest.xml:33:13
 	android:name
-		ADDED from AndroidManifest.xml:32:13
+		ADDED from AndroidManifest.xml:31:19

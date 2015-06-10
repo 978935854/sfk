@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/array.xml -->
+    <!-- From: file:/H:/AndroidSpace/sfk/app/src/main/res/values-v14/array.xml -->
     <eat-comment/>
     <string-array name="age">
         <item>20岁以下</item>
@@ -326,6 +326,113 @@
         <item>玉树藏族自治州</item>
         <item>海西蒙古族藏族自治州</item>
     </string-array>
+    <!-- From: file:/H:/AndroidSpace/sfk/app/src/main/res/values-v14/scenic_array.xml -->
+    <eat-comment/>
+    <string-array name="scenic_anhui">
+
+    </string-array>
+    <string-array name="scenic_aomeng">
+
+    </string-array>
+    <string-array name="scenic_beijing">
+        <item>天安门</item>
+    </string-array>
+    <string-array name="scenic_chongxing">
+
+    </string-array>
+    <string-array name="scenic_fujian">
+
+    </string-array>
+    <string-array name="scenic_gansu">
+
+    </string-array>
+    <string-array name="scenic_guangdong">
+        <item>西关</item>
+    </string-array>
+    <string-array name="scenic_guangxi">
+
+    </string-array>
+    <string-array name="scenic_guizhou">
+
+    </string-array>
+    <string-array name="scenic_hainan">
+
+    </string-array>
+    <string-array name="scenic_hebei">
+
+    </string-array>
+    <string-array name="scenic_heilongjiang">
+
+    </string-array>
+    <string-array name="scenic_henan">
+
+    </string-array>
+    <string-array name="scenic_hubei">
+
+    </string-array>
+    <string-array name="scenic_hunan">
+        <item>张家界</item>
+        <item>凤凰古城</item>
+    </string-array>
+    <string-array name="scenic_jiangsu">
+
+    </string-array>
+    <string-array name="scenic_jiangxi">
+
+    </string-array>
+    <string-array name="scenic_jilin">
+
+    </string-array>
+    <string-array name="scenic_liaoling">
+
+    </string-array>
+    <string-array name="scenic_neimenggu">
+
+    </string-array>
+    <string-array name="scenic_ningxia">
+
+    </string-array>
+    <string-array name="scenic_qinghai">
+
+    </string-array>
+    <string-array name="scenic_shandong">
+
+    </string-array>
+    <string-array name="scenic_shanghai">
+
+    </string-array>
+    <string-array name="scenic_shanxi">
+
+    </string-array>
+    <string-array name="scenic_shuanxi">
+
+    </string-array>
+    <string-array name="scenic_sichuan">
+
+    </string-array>
+    <string-array name="scenic_taiwan">
+
+    </string-array>
+    <string-array name="scenic_tianjing">
+        <item>炮台</item>
+    </string-array>
+    <string-array name="scenic_xianggang">
+
+    </string-array>
+    <string-array name="scenic_xingjiang">
+
+    </string-array>
+    <string-array name="scenic_xizang">
+        <item>布达拉宫</item>
+    </string-array>
+    <string-array name="scenic_yunnan">
+
+    </string-array>
+    <string-array name="scenic_zhejiang">
+
+    </string-array>
+    <!-- From: file:/H:/AndroidSpace/sfk/app/src/main/res/values-v14/array.xml -->
+    <eat-comment/>
     <string-array name="sex">
         <item>男</item>
         <item>女</item>
@@ -475,12 +582,12 @@
         <item>台州市</item>
         <item>丽水市</item>
     </string-array>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/H:/AndroidSpace/sfk/app/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- API 14 theme customizations can go here. -->
     </style>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-v14/values.xml -->
+    <!-- From: file:/H:/AndroidSpace/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-v14/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat.Base.SearchResult.Subtitle" parent="@android:TextAppearance.Holo.SearchResult.Subtitle"/>
     <style name="TextAppearance.AppCompat.Base.SearchResult.Title" parent="@android:TextAppearance.Holo.SearchResult.Title"/>
