@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -160,7 +161,7 @@ public class SfInfoActivity extends Activity {
             String jsonString = readStream(new URL(url).openStream());
             JSONObject jsonObject;
             Photo newsBean;
-
+            Log.i("jsonString",jsonString);
             jsonObject = new JSONObject(jsonString);
             JSONArray jsonArray = jsonObject.getJSONArray("sfphotolist");
             for(int i=0; i<jsonArray.length(); i++){
@@ -194,7 +195,7 @@ public class SfInfoActivity extends Activity {
             Bean.setStime(jsonObject.getString("stime"));
             Bean.setSpeoplenum(jsonObject.getInt("speoplenum"));
             Bean.setSsex(jsonObject.getInt("ssex"));
-            Bean.setSage(jsonObject.getInt("sage"));
+            Bean.setSage(jsonObject.getInt("sage")+"");
             Bean.setLasttime(jsonObject.getInt("lasttime"));
             Bean.setYourgoods(jsonObject.getString("yourgoods"));
             Bean.setScontactway(jsonObject.getString("scontactway"));

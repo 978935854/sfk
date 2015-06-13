@@ -83,13 +83,12 @@ public class AddSfkActivity extends Activity {
      */
     private void choiceImage(){
         intent=getIntent();
-        if(intent.getExtras()!=null){
-            Bundle bundle=intent.getExtras();
-            author=bundle.getString("author");
-            size=bundle.getInt("size");
-
-            Log.i("author------------------",author+"");
-            Log.i("size--------------------",size+"");
+        Bundle bundle=intent.getExtras();
+        author=bundle.getString("author");
+        size=bundle.getInt("size");
+        if(author!=null){
+            Log.i("author------",author+"");
+            Log.i("size--------",size+"");
 
             String att=author.substring(author.indexOf("[")+1,author.indexOf("]"));
             String a[]=att.split(",");

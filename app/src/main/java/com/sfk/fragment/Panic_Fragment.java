@@ -111,7 +111,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
             adapter = new Seek_sf_topic_adapter(getActivity(),seekSFTopicList,R.layout.seek_sf_topic_list);
             seek_sf_topic_listView.setAdapter(adapter);
             select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
-//            seek_sf_topic_listView.setOnItemClickListener();
+            seek_sf_topic_listView.setOnItemClickListener(Panic_Fragment.this);
         }
     }
 
@@ -221,20 +221,9 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int sid = seekSFTopicList.get(position).getSid();
-        SfInfoService sfInfoService = new SfInfoService();
-        Sfk sfk = new Sfk();
-        try {
-            sfk = sfInfoService.findsfkById(sid);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Intent intent=new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("sfk",sfk);
-        intent.putExtras(bundle);
         intent.setClass(getActivity(),SfInfoActivity.class);
+        intent.putExtra("sfinfoID", sid);
         startActivity(intent);
     }
 

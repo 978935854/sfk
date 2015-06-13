@@ -227,18 +227,8 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int sid = seekSFTopicList.get(position).getSid();
-        SfInfoService sfInfoService = new SfInfoService();
-        Sfk sfk = new Sfk();
-        try {
-            sfk = sfInfoService.findsfkById(sid);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Intent intent=new Intent();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("sfk",sfk);
         intent.putExtras(bundle);
         intent.setClass(this,SfInfoActivity.class);
         intent.putExtra("sfinfoID", seekSFTopicList.get(position).getSid());
