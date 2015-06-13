@@ -32,6 +32,7 @@
                 android:ems="100"
                 android:id="@+id/scontactway" />
 
+
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -56,12 +57,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/yourgoods_sfk"
                 android:id="@+id/yourgoods" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/type_sfk"
-                android:id="@+id/type" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -130,11 +125,13 @@
                     android:id="@+id/textView5" />
 
                 <Spinner
-                    android:layout_width="80dp"
+                    android:layout_width="180dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/provinces" />
+
+
                 <Spinner
-                    android:layout_width="80dp"
+                    android:layout_width="180dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/cities" />
 
@@ -159,26 +156,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-<!--
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    android:layout_margin="20dp"
-                    android:id="@+id/imageView" />
--->
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    android:layout_margin="20dp"
-                    android:id="@+id/imageView" />
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:id="@+id/upImage" />
+                <LinearLayout
+                    android:id="@+id/imagesLayout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Choice"
+                    android:id="@+id/choice" />
+
+                <!--<ImageButton-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:id="@+id/upImage" />-->
+
             </LinearLayout>
 
             <LinearLayout

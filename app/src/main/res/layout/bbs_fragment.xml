@@ -14,13 +14,8 @@
             android:id="@+id/bbs_TopTitle"
             android:textSize="20dp"
             android:gravity="center_vertical"
-            android:background="#b6262b4d"
+            android:background="#b6039101"
             android:textColor="#ffcfd8e5" />
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:id="@+id/bbs_top_List" />
 
         <ListView
             android:layout_width="fill_parent"

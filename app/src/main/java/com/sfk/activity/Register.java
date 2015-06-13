@@ -46,10 +46,10 @@ public class Register extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                new RunPostToLoginAsyncTask(this, et_username, et_password, tv_info).execute();
+                new RunPostToLoginAsyncTask(this, et_username, et_password, tv_info,this.getApplication()).execute();
                 break;
             case R.id.btn_register:
-                new RunPostToRegisterAsyncTask(this, et_username, et_password, tv_info).execute();
+                new RunPostToRegisterAsyncTask(this, et_username, et_password, tv_info, this.getApplication()).execute();
                 break;
             default:
                 break;

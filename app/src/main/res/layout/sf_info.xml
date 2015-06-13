@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="#EEEEEE">
 
-    <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+        <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -23,8 +28,8 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -38,7 +43,7 @@
                 android:textSize="18sp"
                 android:gravity="center"
                 android:text="北京西四环沙发"
-                android:id="@+id/title"
+                android:id="@+id/sftitle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -240,5 +245,11 @@
 
     </LinearLayout>
 
+            <com.sfk.utils.ScollListview
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:id="@+id/photolistView" />
 
-</LinearLayout>
+        </LinearLayout>
+
+</ScrollView>

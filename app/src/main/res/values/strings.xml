@@ -7,7 +7,7 @@
     <string name="main">首页</string>
     <string name="panic">抢沙发</string>
     <string name="bbs">社区</string>
-    <string name="person">我的</string>
+    <string name="person">个人中心</string>
     <string name="searchSF">搜索沙发</string>
     <string name="seekSF">寻找沙发</string>
     <string name="ReleaseSF">发布沙发</string>
@@ -26,6 +26,8 @@
     <string name="scontactway_sfk">联系方式</string>
     <string name="othermessage_sfk">其他信息</string>
     <string name="addSfk">发布沙发</string>
+    <string name="Choice">选择图片</string>
+    <string name="path">路径显示</string>
 
     <!-- 登陆注册 -->
 
