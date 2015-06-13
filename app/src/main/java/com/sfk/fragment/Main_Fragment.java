@@ -21,21 +21,23 @@ public class Main_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment,container,false);
-        //寻找沙发
+        //我是沙子
         ImageButton seekSF_btn = (ImageButton) view.findViewById(R.id.seekSF_btn);
         seekSF_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SeekSFActivity.class);
+                intent.putExtra("tid",1);
                 startActivity(intent);
             }
         });
-        //发布沙发
+        //我是沙主
         ImageButton releaseSF_btn = (ImageButton) view.findViewById(R.id.seek_sf_topic_listView);
         releaseSF_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddSfkActivity.class);
+                Intent intent = new Intent(getActivity(), SeekSFActivity.class);
+                intent.putExtra("tid",2);
                 startActivity(intent);
             }
         });

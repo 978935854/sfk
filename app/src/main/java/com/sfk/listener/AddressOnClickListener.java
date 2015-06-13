@@ -151,11 +151,11 @@ public class AddressOnClickListener implements View.OnClickListener {
                 }else {
                     btn.setText(addressUtil.cities);
                 }
+                builder.dismiss();
                 Intent intent = new Intent();
+                intent.putExtra("btn",btn.getId());
                 intent.setAction("picker_seletedText");
                 context.sendBroadcast(intent);  //发送广播，更新数据
-                builder.dismiss();
-
             }
         });
     }

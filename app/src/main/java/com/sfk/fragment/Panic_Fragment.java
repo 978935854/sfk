@@ -1,9 +1,11 @@
 package com.sfk.fragment;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,13 +18,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.sfk.UI.PickerView;
 import com.sfk.UI.RefreshableView;
 import com.sfk.activity.R;
 import com.sfk.activity.SfInfoActivity;
 import com.sfk.adapter.Seek_sf_topic_adapter;
+import com.sfk.listener.AddressOnClickListener;
 import com.sfk.listener.PickerOnClickListener;
 import com.sfk.pojo.Sfk;
 import com.sfk.service.SeekSFService;
+import com.sfk.service.SfInfoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,25 +46,34 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
     View load_data_view;
     Seek_sf_topic_adapter adapter;
     RefreshableView refreshableView;
-    Handler refreshableHandler = new Handler();
+    RelativeLayout select_to_refresh_head;
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.panic_fragment,container,false);
         //加载view组件
         load_view();
+        //注册广播接收器
+        getActivity().registerReceiver(new PickerSendBroadcast(),pickerfilter);
         seekSFTopicList = new ArrayList<Sfk>();
         adapter = new Seek_sf_topic_adapter(getActivity(),seekSFTopicList,R.layout.seek_sf_topic_list);
         seek_sf_topic_listView.setAdapter(adapter);
         //注册接收选择器的参数
-        getActivity().registerReceiver(new PickerSendBroadcast(), filter);
+//        getActivity().registerReceiver(new PickerSendBroadcast(), filter);
         //选择加载沙发单列表
+        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
+            }
+        }, 0);
         loadSelectData();
         return view;
     }
 
     //加载view组件
     private void load_view() {
+        select_to_refresh_head = (RelativeLayout) view.findViewById(R.id.select_to_refresh_head);
         seek_sf_topic_listView = (ListView) view.findViewById(R.id.seek_sf_topic_listView2);
         refreshableView = (RefreshableView) view.findViewById(R.id.refreshable_view);
         sex_btn = (Button) view.findViewById(R.id.sex_btn2);
@@ -67,38 +81,38 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         peopleNum_btn = (Button) view.findViewById(R.id.peopleNum_btn2);
     }
 
-    //首次加载沙发单列表
+    /*首次加载沙发单列表*/
     public void loadFirstData() {
-
-        seekSFService = new SeekSFService(getActivity());
+        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
         //获取沙发单列表
-        try {
-            seekSFTopicList.clear();
-            List<Sfk> list = seekSFService.getSeekSFTopicList();
-            seekSFTopicList.addAll(list);
-        } catch (InterruptedException e) {
-            Log.i("InterruptedException2", "InterruptedException");
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        //list
-        adapter.notifyDataSetChanged();
-        seek_sf_topic_listView.setOnItemClickListener(this);
-        Log.i("adapter_2",adapter.getCount()+","+seekSFTopicList.size());
-        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshableHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
-                    }
-                });
-                refreshableView.finishRefreshing();
-            }
-        }, 0);
+        AsyncLoadFirstData asyncLoadFirstData = new AsyncLoadFirstData();
+        asyncLoadFirstData.execute(2);
+    }
 
+    /*首次异步加载*/
+    class AsyncLoadFirstData extends AsyncTask<Integer,Void,List<Sfk>> {
+        @Override
+        protected List<Sfk> doInBackground(Integer... params) {
+            try {
+                seekSFService = new SeekSFService(getActivity());
+                seekSFTopicList = seekSFService.getSeekSFTopicList(params[0]);
+                Thread.sleep(2000);//模拟网络耗时时间
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            return seekSFTopicList;
+        }
+
+        @Override
+        protected void onPostExecute(List<Sfk> sfks) {
+            super.onPostExecute(sfks);
+            adapter = new Seek_sf_topic_adapter(getActivity(),seekSFTopicList,R.layout.seek_sf_topic_list);
+            seek_sf_topic_listView.setAdapter(adapter);
+            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
+//            seek_sf_topic_listView.setOnItemClickListener();
+        }
     }
 
     //选择加载沙发单列表
@@ -112,6 +126,8 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
 
         PickerOnClickListener pickerOnClickListener = new PickerOnClickListener(getActivity(),dataList,sex_btn);
         sex_btn.setOnClickListener(pickerOnClickListener);
+        //点击地点事件
+        address_btn.setOnClickListener(new AddressOnClickListener(getActivity(),address_btn));
 
         peopleNum_dataList = new ArrayList<String>();
         peopleNum_dataList.add("全部(人数)");
@@ -124,22 +140,23 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         peopleNum_btn.setOnClickListener(peopleNum_pickerOnClickListener);
     }
 
+    public void refreshListView(){
+        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度
+        loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
+    }
+
     //广播接收选择器参数
-    IntentFilter filter = new IntentFilter("picker_seletedText");
+    IntentFilter pickerfilter = new IntentFilter("picker_seletedText");
     class PickerSendBroadcast extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             int btn=0;
             btn = intent.getIntExtra("btn",0);
-
-            if(sex_btn.getId()==btn || peopleNum_btn.getId()==btn){
-                RelativeLayout select_refresh_relativeLayout = (RelativeLayout) view.findViewById(R.id.select_to_refresh_head);
-                select_refresh_relativeLayout.setVisibility(View.VISIBLE);
-                loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
-                select_refresh_relativeLayout.setVisibility(View.GONE);
-            }
+            Log.i("btn_id",btn+"");
+            refreshListView();    //根据顶部搜索条件，加载listview菜单新数据
         }
     }
+
     //根据顶部搜索条件，加载listview菜单新数据
     private void loadNewData(){
         Sfk sfk = new Sfk();
@@ -153,8 +170,6 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
             sfk.setSsex(0);
         }
 
-        Log.i("ssex22",sfk.getSsex().toString());
-
         if("全部(人数)".equals(peopleNum_btn.getText())){
             sfk.setSpeoplenum(0);
         }else if("接待1人".equals(peopleNum_btn.getText())){
@@ -167,36 +182,64 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
             sfk.setSpeoplenum(4);
         }
 
-        if("地点".equals(address_btn.getText())){
+        if("地点(全部)".equals(address_btn.getText())){
             sfk.setSaddress("");
         }else {
             sfk.setSaddress(address_btn.getText().toString());
         }
+        sfk.setTid(2);
+        AsyncLoadSeekList asyncLoadSeekList = new AsyncLoadSeekList();
+        asyncLoadSeekList.execute(sfk);
+    }
+    //下拉lisview更新数据
+    class AsyncLoadSeekList extends AsyncTask<Sfk,Void, List<Sfk> >{
+        @Override
+        protected List<Sfk> doInBackground(Sfk... params) {
+            List<Sfk> sfkList = null;     //发送数据到服务器端并返回沙发单
+            try {
+                sfkList = seekSFService.getSeekSFTopicListBySfk(params[0]);
+                Thread.sleep(2000);//模拟网络耗时时间
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            return sfkList;
+        }
 
-        try {
+        @Override
+        protected void onPostExecute(List<Sfk> sfks) {
             seekSFTopicList.clear();                            //清除原有的listview数据源
-            List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
-            seekSFTopicList.addAll(sfkList);                    //listview数据源更新
+            seekSFTopicList.addAll(sfks);                        //listview数据源更新
             adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            select_to_refresh_head.setVisibility(View.GONE);    //移除listview加载数据进度条
+            refreshableView.finishRefreshing();
+            super.onPostExecute(sfks);
         }
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //list监听
+        int sid = seekSFTopicList.get(position).getSid();
+        SfInfoService sfInfoService = new SfInfoService();
+        Sfk sfk = new Sfk();
+        try {
+            sfk = sfInfoService.findsfkById(sid);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Intent intent=new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("sfk",sfk);
+        intent.putExtras(bundle);
         intent.setClass(getActivity(),SfInfoActivity.class);
         startActivity(intent);
-
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
 }

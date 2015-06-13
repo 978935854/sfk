@@ -6,17 +6,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sfk.UI.PickerView;
@@ -26,6 +30,7 @@ import com.sfk.listener.AddressOnClickListener;
 import com.sfk.listener.PickerOnClickListener;
 import com.sfk.pojo.Sfk;
 import com.sfk.service.SeekSFService;
+import com.sfk.service.SfInfoService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,60 +45,84 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     List<String> dataList,peopleNum_dataList;
     private List<Sfk> seekSFTopicList = new ArrayList<Sfk>();
     SeekSFService seekSFService;
-    Button sex_btn,address_btn,peopleNum_btn;
-    View load_data_view;
+    Button sex_btn,address_btn,peopleNum_btn,sf_btn;
     Seek_sf_topic_adapter adapter;
     RefreshableView refreshableView;
-    Handler refreshableHandler = new Handler();
+    RelativeLayout select_to_refresh_head;
+    int tid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.seek_sf_topic);
-        Log.i("currenttime",System.currentTimeMillis()+"");
-        //注册接收选择器的参数
-        registerReceiver(new PickerSendBroadcast(), filter);
-
+        tid = getIntent().getIntExtra("tid",0);
+        sf_btn = (Button) findViewById(R.id.sf_btn);
+        TextView sf_title = (TextView) findViewById(R.id.sf_title);
+        if(tid==1){
+            tid=2;//数字调换，用来获取相反的数据，如沙子获取沙主发布的沙发单
+            sf_title.setText("我要沙发");
+            sf_btn.setText("申请沙发");
+        }else{
+            tid=1;//数字调换，用来获取相反的数据，如沙子获取沙主发布的沙发单
+            sf_title.setText("我有沙发");
+            sf_btn.setText("发布沙发");
+        }
+        sf_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SeekSFActivity.this,AddSfkActivity.class);
+                intent.putExtra("tid",tid);
+                startActivity(intent);
+            }
+        });
+        //注册广播接收器
+        registerReceiver(new PickerSendBroadcast(),pickerfilter);
+        seek_sf_topic_listView = (ListView) findViewById(R.id.seek_sf_topic_listView);
+        select_to_refresh_head = (RelativeLayout) findViewById(R.id.select_to_refresh_head);
         loadFirstData();    //首次加载沙发单列表
         loadSelectData();   //选择加载沙发单列表
+
         refreshableView = (RefreshableView) findViewById(R.id.refreshable_view);
         refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
             public void onRefresh() {
-                refreshableHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
-                    }
-                });
-                refreshableView.finishRefreshing();
+                loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
             }
         }, 0);
-
     }
 
-    //首次加载沙发单列表
+    /*首次加载沙发单列表*/
     private void loadFirstData() {
-        seekSFService = new SeekSFService(this);
+        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
         //获取沙发单列表
-        try {long time_1 = System.currentTimeMillis();
-            seekSFTopicList = seekSFService.getSeekSFTopicList();
-            long time_2 = System.currentTimeMillis();
-            Log.i("currenttime",(time_2-time_1)+"");
-        } catch (InterruptedException e) {
-            Log.i("InterruptedException2","InterruptedException");
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        AsyncLoadFirstData asyncLoadFirstData = new AsyncLoadFirstData();
+        asyncLoadFirstData.execute(tid);
+    }
+
+    /*首次异步加载*/
+    class AsyncLoadFirstData extends AsyncTask<Integer,Void,List<Sfk>>{
+        @Override
+        protected List<Sfk> doInBackground(Integer... params) {
+            try {
+                seekSFService = new SeekSFService(SeekSFActivity.this);
+                seekSFTopicList = seekSFService.getSeekSFTopicList(params[0]);
+                Thread.sleep(2000);//模拟网络耗时时间
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            return seekSFTopicList;
         }
-        //list
-        seek_sf_topic_listView = (ListView) findViewById(R.id.seek_sf_topic_listView);
-        adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
-        load_data_view = this.getLayoutInflater().inflate(R.layout.load_data_style,null);
-        seek_sf_topic_listView.addHeaderView(load_data_view);   //添加listview加载数据进度条
-        seek_sf_topic_listView.setAdapter(adapter);
-        seek_sf_topic_listView.removeHeaderView(load_data_view);////加载完listview关闭数据进度条
-        seek_sf_topic_listView.setOnItemClickListener(this);
+
+        @Override
+        protected void onPostExecute(List<Sfk> sfks) {
+            super.onPostExecute(sfks);
+            adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
+            seek_sf_topic_listView.setAdapter(adapter);
+            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
+            seek_sf_topic_listView.setOnItemClickListener(SeekSFActivity.this);
+        }
     }
 
     //选择加载沙发单列表
@@ -124,21 +153,11 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         peopleNum_btn.setOnClickListener(peopleNum_pickerOnClickListener);
     }
 
-    //广播接收选择器参数
-    IntentFilter filter = new IntentFilter("picker_seletedText");
-
-
-    class PickerSendBroadcast extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            RelativeLayout select_refresh_relativeLayout = (RelativeLayout) findViewById(R.id.select_to_refresh_head);
-            select_refresh_relativeLayout.setVisibility(View.VISIBLE);
-            Log.i("select_refresht",select_refresh_relativeLayout.getVisibility()+"");
-            loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
-            select_refresh_relativeLayout.setVisibility(View.GONE);
-            Log.i("select_refresht",select_refresh_relativeLayout.getVisibility()+"");
-        }
+    public void refreshListView(){
+        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度
+        loadNewData();   //根据顶部搜索条件，加载listview菜单新数据
     }
+
     //根据顶部搜索条件，加载listview菜单新数据
     private void loadNewData(){
         Sfk sfk = new Sfk();
@@ -151,8 +170,6 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         }else{
             sfk.setSsex(0);
         }
-
-        Log.i("ssex22",sfk.getSsex().toString());
 
         if("全部(人数)".equals(peopleNum_btn.getText())){
             sfk.setSpeoplenum(0);
@@ -171,36 +188,69 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         }else {
             sfk.setSaddress(address_btn.getText().toString());
         }
+        sfk.setTid(tid);
+        AsyncLoadSeekList asyncLoadSeekList = new AsyncLoadSeekList();
+        asyncLoadSeekList.execute(sfk);
+    }
+    //下拉lisview更新数据
+    class AsyncLoadSeekList extends AsyncTask<Sfk,Void, List<Sfk> >{
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+        @Override
+        protected List<Sfk> doInBackground(Sfk... params) {
+            List<Sfk> sfkList = null;     //发送数据到服务器端并返回沙发单
+            try {
+                sfkList = seekSFService.getSeekSFTopicListBySfk(params[0]);
+                Thread.sleep(2000);//模拟网络耗时时间
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            return sfkList;
+        }
 
-        try {
+        @Override
+        protected void onPostExecute(List<Sfk> sfks) {
             seekSFTopicList.clear();                            //清除原有的listview数据源
-            long time_1 = System.currentTimeMillis();
-            List<Sfk> sfkList = seekSFService.getSeekSFTopicListBySfk(sfk);     //发送数据到服务器端并返回沙发单
-            long time_2 = System.currentTimeMillis();
-            Log.i("currenttime_2",time_2-time_1+"");
-            seekSFTopicList.addAll(sfkList);                    //listview数据源更新
+            seekSFTopicList.addAll(sfks);                        //listview数据源更新
             adapter.notifyDataSetChanged();                     //数据源更改，通知listview更新数据
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            select_to_refresh_head.setVisibility(View.GONE);    //移除listview加载数据进度条
+            refreshableView.finishRefreshing();
+            super.onPostExecute(sfks);
         }
     }
 
+    /*list监听*/
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //list监听
+        int sid = seekSFTopicList.get(position).getSid();
+        SfInfoService sfInfoService = new SfInfoService();
+        Sfk sfk = new Sfk();
+        try {
+            sfk = sfInfoService.findsfkById(sid);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Intent intent=new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("sfk",sfk);
+        intent.putExtras(bundle);
         intent.setClass(this,SfInfoActivity.class);
         startActivity(intent);
     }
 
-    //监听返回键，若返回直接关闭该activity
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK && event.getRepeatCount()==0){
-            finish();
+    /*选择搜索广播接收器*/
+    IntentFilter pickerfilter = new IntentFilter("picker_seletedText");
+    class PickerSendBroadcast extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            refreshListView();
         }
-        return true;
     }
 
 }

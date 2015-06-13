@@ -37,8 +37,8 @@
         android:orientation="horizontal"
         android:background="#ffe6e6e6">
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/main"
             style="@style/rg_btn_style"
             android:id="@+id/main_radioButton"
@@ -49,8 +49,8 @@
             android:textColor="@color/color_main_radiobutton" />
 
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/panic"
             android:id="@+id/panic_radioButton"
             android:drawableTop="@drawable/rb_two_btn_selector"
@@ -59,8 +59,8 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/color_main_radiobutton" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/bbs"
             android:id="@+id/bbs_radioButton"
             android:drawableTop="@drawable/rb_three_btn_selector"
@@ -69,8 +69,8 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/color_main_radiobutton" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/person"
             android:id="@+id/person_radioButton"
             android:drawableTop="@drawable/rg_four_btn_selector"

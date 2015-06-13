@@ -7,6 +7,7 @@
     <drawable name="blue_two">#5C97D5</drawable>
     <drawable name="green">#f0f0</drawable>
     <drawable name="green_two">#42a664</drawable>
+    <drawable name="green_pressed">#368952</drawable>
     <drawable name="yellow">#FFFEA4</drawable>
 
 </resources>

@@ -109,4 +109,10 @@ public class BaseProtocolUtil {
         return jsonArray;
     }
 
+    //获取服务器端返回来的JSON数据并解析
+    public JSONObject getJSONObject() throws JSONException {
+        JSONObject jsonObject = new JSONObject(sb.toString());
+        return jsonObject;
+    }
+
 }

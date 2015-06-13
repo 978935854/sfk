@@ -185,6 +185,11 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
         refreshUpdatedAtValue();
         setOrientation(VERTICAL);
         addView(header, 0);
+        hideHeaderHeight = -100;
+        headerLayoutParams = (MarginLayoutParams) header.getLayoutParams();
+        headerLayoutParams.topMargin = hideHeaderHeight;
+        header.setLayoutParams(headerLayoutParams);
+
     }
 
     /**
