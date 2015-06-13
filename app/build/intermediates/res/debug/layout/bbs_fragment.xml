@@ -9,18 +9,24 @@
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:text="我的沙发游"
             android:id="@+id/bbs_TopTitle"
             android:textSize="20dp"
             android:gravity="center_vertical"
-            android:background="#b62a3717"
-            android:textColor="#ffffa474" />
+            android:background="#b6262b4d"
+            android:textColor="#ffcfd8e5" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:id="@+id/bbs_top_List" />
 
         <ListView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/bbs_TopicList" />
+
     </LinearLayout>
 </LinearLayout>
-<!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/layout/bbs_fragment.xml -->
+<!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/layout/bbs_fragment.xml -->

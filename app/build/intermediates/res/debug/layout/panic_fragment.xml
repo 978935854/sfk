@@ -68,11 +68,18 @@
             android:layout_marginRight="5dp" />
     </LinearLayout>
 
+    <include layout="@layout/select_to_refresh"/>
+
+    <com.sfk.UI.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/seek_sf_topic_listView2"
         android:layout_marginTop="5dp"
         android:background="#ffffff" />
+    </com.sfk.UI.RefreshableView>
 </LinearLayout>
-<!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/layout/panic_fragment.xml -->
+<!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/layout/panic_fragment.xml -->

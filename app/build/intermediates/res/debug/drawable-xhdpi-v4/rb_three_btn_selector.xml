@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/mainpage_destination_normal" android:state_enabled="false"></item>
     <item android:drawable="@drawable/mainpage_destination_normal"></item>
 
-</selector><!-- From: file:/D:/ShaFaKe/sfk/app/src/main/res/drawable-xhdpi/rb_three_btn_selector.xml -->
+</selector><!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/drawable-xhdpi/rb_three_btn_selector.xml -->

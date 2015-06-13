@@ -183,66 +183,7 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 	}
 
 
-	/*
-	 private void uploadBTClick() {
-		 uploadBT.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String url = "http://192.168.1.160:8080/shaFaKe/sfk/SfkAction!upload";
-				//http://192.168.1.160:8080/shaFaKe/sfk/SfkAction!upload
-				final AjaxParams params = new AjaxParams();
-		        //String str=uploadBT.getText().toString();
-		        String att=author.substring(author.indexOf("[")+1,author.indexOf("]"));
-		        String a[]=att.split(",");
 
-
-		        try {
-		        	//Log.i("upload---", "upload"+String.valueOf(i));
-		        	Log.i("upload---", size+"");
-		        	for(int i=0;i<size;i++){
-		        		params.put("size",size+"");
-		        		String name="upload"+(i+1);
-		        		String fname="fname"+(i+1);
-		        		Log.i(name+"-------", name);
-		        		Log.i(name, a[i].trim());
-		        		params.remove(name);
-		        		params.remove(fname);
-		        		params.put(fname, a[i].trim());
-		        		params.put(name, new File(a[i].trim()));
-		        	}
-		        } catch (FileNotFoundException e) {
-		        	e.printStackTrace();
-		        }
-		        finalHttp = new FinalHttp();
-		        finalHttp.configTimeout(10 * 1000);
-		        finalHttp.post(url, params, new AjaxCallBack<String>() {
-
-					@Override
-					public void onFailure(Throwable t, String strMsg) {
-						Toast.makeText(MainActivity.this, "上传失败",  Toast.LENGTH_SHORT).show();
-						super.onFailure(t, strMsg);
-					}
-
-					@Override
-					public void onStart() {
-						Toast.makeText(MainActivity.this, "开始上传",  Toast.LENGTH_SHORT).show();
-						super.onStart();
-					}
-
-					@Override
-					public void onSuccess(String t) {
-						Toast.makeText(MainActivity.this, "上传成功",  Toast.LENGTH_SHORT).show();
-						super.onSuccess(t);
-					}
-
-		        });
-
-
-			}
-
-
-		 });
-	}*/
 	 
 	 
 	 
@@ -255,12 +196,6 @@ public class MainActivity extends Activity implements OnImageDirSelected{
 				author = intent.getStringExtra("path");
 				String str=intent.getStringExtra("size");
 				size=Integer.parseInt(str);
-				//uploadBT.setText(author);
-				//在android端显示接收到的广播内容
-				//Toast.makeText(MainActivity.this, author, 1).show();
-				//Toast.makeText(MainActivity.this, size+"", 1).show();
-				//在结束时可取消广播
-				//MainActivity.this.unregisterReceiver(this);
 			}
 		}
 	}
