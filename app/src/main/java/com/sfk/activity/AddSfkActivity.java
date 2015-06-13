@@ -62,8 +62,8 @@ public class AddSfkActivity extends Activity {
         setView();
         setProvinces();
         getSfkinfo();
-        getAddSfkInfo();
         choiceImage();
+        getAddSfkInfo();
         addSfkOnclick();
 
     }
@@ -129,7 +129,9 @@ public class AddSfkActivity extends Activity {
         addSfk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "http://192.168.1.160:8080/shaFaKe/sfk/SfkAction!addSfk";
+
+                //发布沙发客异步请求服务器操作
+                String url = "http://192.168.1.157:8080/shaFaKe/sfk/SfkAction!addSfk";
                 AsyncHttpClientUtil.post(url, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
@@ -141,8 +143,8 @@ public class AddSfkActivity extends Activity {
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
                         try {
-                            JSONObject jsonObject = response.getJSONObject("sfk");
-                            Toast.makeText(AddSfkActivity.this, "发布成功",  Toast.LENGTH_SHORT).show();
+                            //String ms = response.getString("sfk");
+                            //Toast.makeText(AddSfkActivity.this, ms,  Toast.LENGTH_SHORT).show();
                             //Log.i("ttttttttttttttttttttt",jsonObject.getString("saddress"));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -150,15 +152,13 @@ public class AddSfkActivity extends Activity {
                     }
                 });
 
-
-                String url1 = "http://192.168.1.160:8080/shaFaKe/sfk/SfkAction!upload";
+                //上传图片异步请求服务器操作
+                String url1 = "http://192.168.1.157:8080/shaFaKe/sfk/SfkAction!upload";
                 //http://192.168.1.160:8080/shaFaKe/sfk/SfkAction!upload
                 final AjaxParams params = new AjaxParams();
                 //String str=uploadBT.getText().toString();
                 String att=author.substring(author.indexOf("[")+1,author.indexOf("]"));
                 String a[]=att.split(",");
-
-
                 try {
                     //Log.i("upload---", "upload"+String.valueOf(i));
                     Log.i("upload---", size+"");
@@ -182,19 +182,19 @@ public class AddSfkActivity extends Activity {
 
                     @Override
                     public void onFailure(Throwable t, String strMsg) {
-                        Toast.makeText(AddSfkActivity.this, "上传失败",  Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AddSfkActivity.this, "上传失败",  Toast.LENGTH_SHORT).show();
                         super.onFailure(t, strMsg);
                     }
 
                     @Override
                     public void onStart() {
-                        Toast.makeText(AddSfkActivity.this, "开始上传",  Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AddSfkActivity.this, "开始上传",  Toast.LENGTH_SHORT).show();
                         super.onStart();
                     }
 
                     @Override
                     public void onSuccess(String t) {
-                        Toast.makeText(AddSfkActivity.this, "上传成功",  Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AddSfkActivity.this, "上传成功",  Toast.LENGTH_SHORT).show();
                         super.onSuccess(t);
                     }
 
