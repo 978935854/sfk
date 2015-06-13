@@ -20,7 +20,7 @@ public class Sfk implements java.io.Serializable {
 	private String stime;
 	private Integer speoplenum;
 	private Integer ssex;
-	private Integer sage;
+	private String sage;
 	private Integer lasttime;
 	private String yourgoods;
 	private String scontactway;
@@ -82,13 +82,17 @@ public class Sfk implements java.io.Serializable {
 	public void setSsex(Integer ssex) {
 		this.ssex = ssex;
 	}
-	public Integer getSage() {
-		return sage;
-	}
-	public void setSage(Integer sage) {
-		this.sage = sage;
-	}
-	public Integer getLasttime() {
+
+    public void setSage(String sage) {
+        this.sage = sage;
+    }
+
+    public String getSage() {
+
+        return sage;
+    }
+
+    public Integer getLasttime() {
 		return lasttime;
 	}
 	public void setLasttime(Integer lasttime) {

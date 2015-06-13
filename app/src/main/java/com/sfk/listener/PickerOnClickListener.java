@@ -18,24 +18,23 @@ import java.util.List;
  * Created by Administrator on 2015/5/29.
  */
 public class PickerOnClickListener implements View.OnClickListener{
-    private Context context;
+    Context context;
     List<String> dataList;
     View pickerView;
     String selectedText=null;
     Button btn;
-    public PickerOnClickListener(Context context, List<String> dataList,Button btn) {
+    AlertDialog alertDialog;
+    public PickerOnClickListener(Context context,List<String> dataList,Button btn) {
         this.context = context;
         this.dataList = dataList;
         this.btn = btn;
     }
-
     public void onClick(View v) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pickerView = inflater.inflate(R.layout.picker_layout,null);
         PickerView picker_View = (PickerView) pickerView.findViewById(R.id.picker_view);
         picker_View.setData(dataList);
         pickerDialog();
-
         selectedText = dataList.get(dataList.size() / 2);
         picker_View.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
@@ -45,7 +44,7 @@ public class PickerOnClickListener implements View.OnClickListener{
         });
     }
     private void pickerDialog(){
-        final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.show();
         alertDialog.getWindow().setContentView(pickerView);
         Button exitSelect = (Button) alertDialog.findViewById(R.id.exitSelect);
@@ -60,12 +59,11 @@ public class PickerOnClickListener implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 btn.setText(selectedText);
+                alertDialog.dismiss();
                 Intent intent = new Intent();
-                intent.putExtra("selectedText",selectedText);
                 intent.putExtra("btn",btn.getId());
                 intent.setAction("picker_seletedText");
                 context.sendBroadcast(intent);
-                alertDialog.dismiss();
             }
         });
     }

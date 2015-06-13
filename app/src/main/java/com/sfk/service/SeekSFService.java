@@ -40,136 +40,77 @@ public class SeekSFService {
 
 
     //获取沙发单列表
-    public List<Sfk> getSeekSFTopicList() throws InterruptedException, ExecutionException {
-        FutureTask<List<Sfk>> getListFutureTask = new FutureTask<List<Sfk>>(new Callable<List<Sfk>>() {
-            @Override
-            public List<Sfk> call() throws Exception {
-                seekSFTopicList = new ArrayList<Sfk>();
-                baseProtocolUtil = new BaseProtocolUtil();
-                try {
-                    baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList");
-                    String responseCode = baseProtocolUtil.parse();
-                    if("error".equals(responseCode)){
-                        Message msg = new Message();
-                        boolean netState = isOpenNetwork(); //  检测网络是否正常
-                        if(netState){       //本地网络正常，证明服务器有问题
-                            msg.obj="serviceError";
-                        }else{              //服务器端正常，证明本地网络有问题
-                            msg.obj="locationError";
-                        }
-                        handler.sendMessage(msg);
-                    }
-
-                    JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
-                    for(int i=0;i<sfkArray.length();i++){
-                        Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
-                        seekSFTopicList.add(sfk);
-                    }
-                    Log.i("sfkList",seekSFTopicList.toString());
-                    return seekSFTopicList;
-                }catch (JSONException e) {
-                    e.printStackTrace();
+    public List<Sfk> getSeekSFTopicList(final int tid) throws InterruptedException, ExecutionException {
+        seekSFTopicList = new ArrayList<Sfk>();
+        baseProtocolUtil = new BaseProtocolUtil();
+        try {
+            baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList?tid="+tid);
+            String responseCode = baseProtocolUtil.parse();
+            if("error".equals(responseCode)){
+                Message msg = new Message();
+                boolean netState = isOpenNetwork(); //  检测网络是否正常
+                if(netState){       //本地网络正常，证明服务器有问题
+                    msg.obj="serviceError";
+                }else{              //服务器端正常，证明本地网络有问题
+                    msg.obj="locationError";
                 }
-                return seekSFTopicList;
+//                handler.sendMessage(msg);
             }
-        });
 
-        new Thread(getListFutureTask).start();
+            JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
+            for(int i=0;i<sfkArray.length();i++){
+                Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
+                seekSFTopicList.add(sfk);
+            }
+            Log.i("sfkList",seekSFTopicList.toString());
+            return seekSFTopicList;
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return seekSFTopicList;
 
-        return getListFutureTask.get();
     }
 
 
     //筛选条件，获取沙发单
     public List<Sfk> getSeekSFTopicListBySfk(final Sfk sfk) throws InterruptedException, ExecutionException {
-
-        FutureTask<List<Sfk>> getListFutureTask = new FutureTask<List<Sfk>>(
-                new Callable<List<Sfk>>() {
-                    @Override
-                    public List<Sfk> call() throws Exception {
-                        seekSFTopicList = new ArrayList<Sfk>();
-                        baseProtocolUtil = new BaseProtocolUtil();
-                        try {
-                            String saddress = URLEncoder.encode(sfk.getSaddress(),"UTF-8");
-                            Log.i("saddress22",saddress);
-                            baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
-                                            +"sfk.ssex="+sfk.getSsex()+"&"
-                                            +"sfk.saddress="+saddress+"&"
-                                            +"sfk.speoplenum="+sfk.getSpeoplenum()
-                            );
-                            String responseCode = baseProtocolUtil.parse();
-                            if("error".equals(responseCode)){
-                                Message msg = new Message();
-                                boolean netState = isOpenNetwork(); //  检测网络是否正常
-                                if(netState){       //本地网络正常，证明服务器有问题
-                                    msg.obj="serviceError";
-                                }else{              //服务器端正常，证明本地网络有问题
-                                    msg.obj="locationError";
-                                }
-                                handler.sendMessage(msg);
-                            }
-                            JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
-                            for(int i=0;i<sfkArray.length();i++){
-                                Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
-                                seekSFTopicList.add(sfk);
-                            }
-                        return seekSFTopicList;
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        return seekSFTopicList;
-                    }
-                }
-        );
-
-        new Thread(getListFutureTask).start();
-        return getListFutureTask.get();
-    }
-
-    //筛选条件，获取沙发单
-    private class GetSeekSFTopicListBySfkThread extends Thread{
-        Sfk sfk;
-        List<Sfk> seekSFTopicList;
-        public GetSeekSFTopicListBySfkThread(Sfk sfk) {
-            this.sfk = sfk;
-        }
-        public void run(){
-            seekSFTopicList = new ArrayList<Sfk>();
-            baseProtocolUtil = new BaseProtocolUtil();
-            try {
+           seekSFTopicList = new ArrayList<Sfk>();
+           baseProtocolUtil = new BaseProtocolUtil();
+           try {
                 String saddress = URLEncoder.encode(sfk.getSaddress(),"UTF-8");
-                Log.i("saddress22",saddress);
-                baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
-                        +"sfk.ssex="+sfk.getSsex()+"&"
-                        +"sfk.saddress="+saddress+"&"
-                        +"sfk.speoplenum="+sfk.getSpeoplenum()
-                );
-                String responseCode = baseProtocolUtil.parse();
-                if("error".equals(responseCode)){
-                    Message msg = new Message();
-                    boolean netState = isOpenNetwork(); //  检测网络是否正常
-                    if(netState){       //本地网络正常，证明服务器有问题
-                        msg.obj="serviceError";
-                    }else{              //服务器端正常，证明本地网络有问题
-                        msg.obj="locationError";
-                    }
-                    handler.sendMessage(msg);
-                }
-                JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
-                for(int i=0;i<sfkArray.length();i++){
-                    Sfk sfk = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
-                    seekSFTopicList.add(sfk);
-                }
+                Log.i("saddress22",sfk.getTid()+"");
+                 baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicListBySfk?"
+                                        +"sfk.ssex="+sfk.getSsex()+"&"
+                                        +"sfk.saddress="+saddress+"&"
+                                        +"sfk.speoplenum="+sfk.getSpeoplenum()+"&"
+                                        +"sfk.tid="+sfk.getTid()
+                        );
+                        String responseCode = baseProtocolUtil.parse();
+                        if("error".equals(responseCode)){
+                            Message msg = new Message();
+                            boolean netState = isOpenNetwork(); //  检测网络是否正常
+                            if(netState){       //本地网络正常，证明服务器有问题
+                                msg.obj="serviceError";
+                            }else{              //服务器端正常，证明本地网络有问题
+                                msg.obj="locationError";
+                            }
+//                                handler.sendMessage(msg);
+                        }
+                        JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
+                        for(int i=0;i<sfkArray.length();i++){
+                            Sfk sfk2 = JsonUtil.convertToObj((org.json.JSONObject) sfkArray.get(i),Sfk.class);
+                            seekSFTopicList.add(sfk2);
+                        }
+                    return seekSFTopicList;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                   e.printStackTrace();
+               }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        }
+        return seekSFTopicList;
     }
-
+/*
     //连接错误的提示信息UI线程
     Handler handler = new Handler(){
         @Override
@@ -185,7 +126,7 @@ public class SeekSFService {
         }
     };
 
-
+*/
     /**
      * 对网络连接状态进行判断
      * @return  true, 可用； false， 不可用

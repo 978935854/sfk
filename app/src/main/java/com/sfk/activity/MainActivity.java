@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 
 import com.sfk.fragment.Panic_Fragment;
 import com.sfk.pojo.Sfk;
+import com.sfk.service.BBSservice;
 import com.sfk.service.SeekSFService;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
     private RadioButton[] radioButtons;
     private List<Sfk> seekSFTopicList = new ArrayList<Sfk>();
     private int panic_action=0;
+    BBSservice bbSservice=new BBSservice(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,6 +73,14 @@ public class MainActivity extends ActionBarActivity {
 
                         break;
                     case R.id.bbs_radioButton:      //社区
+                        if(bbSservice.alreadUpdate) {
+
+                            try {
+                                bbSservice.bbsService();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }//社区
                         fragmentTransaction.show(fragments[2]).commit();
                         break;
                     case R.id.person_radioButton:   //个人管理

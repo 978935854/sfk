@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="寻找沙发"
-            android:id="@+id/textView2"
+            android:id="@+id/sf_title"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textSize="18sp"
@@ -69,12 +69,14 @@
             android:layout_marginRight="5dp" />
     </LinearLayout>
 
+    <!--加载数据进度条-->
     <include layout="@layout/select_to_refresh"/>
 
     <com.sfk.UI.RefreshableView
         android:id="@+id/refreshable_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -82,4 +84,17 @@
         android:layout_marginTop="5dp"
         android:background="#ffffff" />
     </com.sfk.UI.RefreshableView>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:text="我有沙发"
+        android:id="@+id/sf_btn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:background="@drawable/green_btn_selector">
+
+    </Button>
 </LinearLayout>

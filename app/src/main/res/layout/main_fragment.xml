@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seekSF"
+                android:text="我是沙子"
                 android:id="@+id/textView4"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ReleaseSF"
+                android:text="我是沙主"
                 android:id="@+id/textView5"
                 android:textSize="20sp"
                 android:textColor="#ffffff"

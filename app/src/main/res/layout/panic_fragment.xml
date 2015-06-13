@@ -29,7 +29,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:text="全部(性别)"
+            android:text="接待(全部)"
             android:id="@+id/sex_btn2"
             android:background="@drawable/common_btn_selector"
             android:layout_weight="0.33"
@@ -44,7 +44,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:text="地点"
+            android:text="地点(全部)"
             android:id="@+id/address_btn2"
             android:background="@drawable/common_btn_selector"
             android:layout_weight="0.33"
@@ -68,6 +68,7 @@
             android:layout_marginRight="5dp" />
     </LinearLayout>
 
+    <!--加载数据进度条-->
     <include layout="@layout/select_to_refresh"/>
 
     <com.sfk.UI.RefreshableView

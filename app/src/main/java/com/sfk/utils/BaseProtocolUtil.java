@@ -1,12 +1,17 @@
 package com.sfk.utils;
 
+import android.os.Environment;
 import android.util.Log;
+
+import com.sfk.Constant.Constant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -107,6 +112,55 @@ public class BaseProtocolUtil {
         JSONObject jsonObject = new JSONObject(sb.toString());
         JSONArray jsonArray = jsonObject.getJSONArray(arrayKey);
         return jsonArray;
+    }
+    public static String showPhotoPath(String path) throws Exception {
+        String photoUrl = Constant.projectServicePath+path;
+        HttpURLConnection conn = (HttpURLConnection) new URL(photoUrl).openConnection();
+        conn.setConnectTimeout(5000);
+        conn.setRequestMethod("GET");
+        conn.setDoOutput(true);
+        if(conn.getResponseCode()==200){
+            Log.i("photoUrl",photoUrl);
+            MD5 md5 = new MD5();
+            File cache=null;
+            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+                cache = new File(Environment.getExternalStorageDirectory(), "LvXingCache");
+                if(!cache.exists()){
+                    cache.mkdirs();
+                }
+            }else{
+                Log.i("sdcardError","Not sdcard");
+            }
+
+            Log.i("cache1111",String.valueOf(cache));
+            File cacheImage = null;
+            if(path!=null){
+                cacheImage = new File(cache,md5.getMD5(path)+path.substring(path.lastIndexOf(".")));
+            }
+            if(cacheImage.exists()){
+                return cacheImage.getPath();
+            }else{
+                InputStream is = conn.getInputStream();
+                FileOutputStream os = new FileOutputStream(cacheImage);
+                byte[] buffer = new byte[1024];
+                int len = 0;
+                while((len = is.read(buffer))!=-1){
+                    os.write(buffer,0,len);
+                }
+                is.close();
+                os.close();
+                return cacheImage.getPath();
+            }
+        }
+        return null;
+
+
+    }
+
+    //获取服务器端返回来的JSON数据并解析
+    public JSONObject getJSONObject() throws JSONException {
+        JSONObject jsonObject = new JSONObject(sb.toString());
+        return jsonObject;
     }
 
 }
