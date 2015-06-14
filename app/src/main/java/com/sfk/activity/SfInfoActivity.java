@@ -175,7 +175,6 @@ public class SfInfoActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
-            e.printStackTrace();
         }
         return beanlist;
     }

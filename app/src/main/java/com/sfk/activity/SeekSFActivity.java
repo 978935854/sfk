@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Filter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -49,6 +51,8 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
     Seek_sf_topic_adapter adapter;
     RefreshableView refreshableView;
     RelativeLayout select_to_refresh_head;
+    LinearLayout loading_ProgressBar;
+    BroadcastReceiver pickerSendBroadcast;
     int tid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,9 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             }
         });
         //注册广播接收器
-        registerReceiver(new PickerSendBroadcast(),pickerfilter);
+        pickerSendBroadcast = new PickerSendBroadcast();
+        registerReceiver(pickerSendBroadcast,pickerfilter);
+        loading_ProgressBar = (LinearLayout) findViewById(R.id.loading_ProgressBar);
         seek_sf_topic_listView = (ListView) findViewById(R.id.seek_sf_topic_listView);
         select_to_refresh_head = (RelativeLayout) findViewById(R.id.select_to_refresh_head);
         loadFirstData();    //首次加载沙发单列表
@@ -91,9 +97,16 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         }, 0);
     }
 
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(pickerSendBroadcast);
+        super.onDestroy();
+    }
+
     /*首次加载沙发单列表*/
     private void loadFirstData() {
-        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
+        loading_ProgressBar.setVisibility(View.VISIBLE);//添加圆形滚动条
+//        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
         //获取沙发单列表
         AsyncLoadFirstData asyncLoadFirstData = new AsyncLoadFirstData();
         asyncLoadFirstData.execute(tid);
@@ -120,7 +133,23 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             super.onPostExecute(sfks);
             adapter = new Seek_sf_topic_adapter(getApplication(),seekSFTopicList,R.layout.seek_sf_topic_list);
             seek_sf_topic_listView.setAdapter(adapter);
-            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
+            //滚动条渐变模糊度始终
+            AlphaAnimation aa = new AlphaAnimation(1.0f,0f);
+            //渐变时间
+            aa.setDuration(500);
+            aa.setRepeatCount(0);
+            loading_ProgressBar.startAnimation(aa);
+
+            //LisView渐变模糊度始终
+            AlphaAnimation aa2 = new AlphaAnimation(0f,1.0f);
+            //渐变时间
+            aa2.setDuration(500);
+            aa2.setRepeatCount(0);
+            seek_sf_topic_listView.startAnimation(aa2);
+
+
+            loading_ProgressBar.setVisibility(View.GONE);//加载完listview关闭数据圆形滚动条
+//            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
             seek_sf_topic_listView.setOnItemClickListener(SeekSFActivity.this);
         }
     }
@@ -243,5 +272,6 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             refreshListView();
         }
     }
+
 
 }
