@@ -69,17 +69,33 @@
     </LinearLayout>
 
     <!--加载数据进度条-->
-    <include layout="@layout/select_to_refresh"/>
-
-    <com.sfk.UI.RefreshableView
-        android:id="@+id/refreshable_view"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-    <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/seek_sf_topic_listView2"
-        android:layout_marginTop="5dp"
-        android:background="#ffffff" />
-    </com.sfk.UI.RefreshableView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <include layout="@layout/select_to_refresh"/>
+
+            <com.sfk.UI.RefreshableView
+                android:id="@+id/refreshable_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/seek_sf_topic_listView2"
+                android:layout_marginTop="5dp"
+                android:background="#ffffff" />
+            </com.sfk.UI.RefreshableView>
+        </LinearLayout>
+
+        <!--中间加载数据滚动-->
+        <include layout="@layout/center_loadingprogress"/>
+
+    </RelativeLayout>
+
 </LinearLayout>

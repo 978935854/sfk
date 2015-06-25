@@ -1,6 +1,7 @@
 package com.sfk.service;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.Message;
@@ -47,14 +48,10 @@ public class SeekSFService {
             baseProtocolUtil.packGet(Constant.projectServicePath+"sfk/SfkAction!findSeekSFTopicList?tid="+tid);
             String responseCode = baseProtocolUtil.parse();
             if("error".equals(responseCode)){
-                Message msg = new Message();
-                boolean netState = isOpenNetwork(); //  检测网络是否正常
-                if(netState){       //本地网络正常，证明服务器有问题
-                    msg.obj="serviceError";
-                }else{              //服务器端正常，证明本地网络有问题
-                    msg.obj="locationError";
-                }
-//                handler.sendMessage(msg);
+                Intent intent = new Intent();
+                intent.setAction("isNetWork");
+                intent.putExtra("responseCode",responseCode);
+                context.sendBroadcast(intent);
             }
 
             JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
@@ -87,14 +84,10 @@ public class SeekSFService {
                         );
                         String responseCode = baseProtocolUtil.parse();
                         if("error".equals(responseCode)){
-                            Message msg = new Message();
-                            boolean netState = isOpenNetwork(); //  检测网络是否正常
-                            if(netState){       //本地网络正常，证明服务器有问题
-                                msg.obj="serviceError";
-                            }else{              //服务器端正常，证明本地网络有问题
-                                msg.obj="locationError";
-                            }
-//                                handler.sendMessage(msg);
+                            Intent intent = new Intent();
+                            intent.setAction("isNetWork");
+                            intent.putExtra("responseCode",responseCode);
+                            context.sendBroadcast(intent);
                         }
                         JSONArray sfkArray = baseProtocolUtil.getJSONArray("sfkArray");
                         for(int i=0;i<sfkArray.length();i++){
@@ -110,23 +103,7 @@ public class SeekSFService {
 
         return seekSFTopicList;
     }
-/*
-    //连接错误的提示信息UI线程
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            String responseCode = (String) msg.obj;
-            if("serviceError".equals(responseCode)){
-                Toast.makeText(context,"服务器端无响应，请稍后再试。",Toast.LENGTH_SHORT).show();
-            }else if ("locationError".equals(responseCode)){
-                Toast.makeText(context,"获取数据失败，请检查网络再重新加载。",Toast.LENGTH_SHORT).show();
-            }
-            Log.i("responseCode",responseCode);
-        }
-    };
 
-*/
     /**
      * 对网络连接状态进行判断
      * @return  true, 可用； false， 不可用

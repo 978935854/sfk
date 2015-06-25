@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -47,19 +49,19 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
     Seek_sf_topic_adapter adapter;
     RefreshableView refreshableView;
     RelativeLayout select_to_refresh_head;
+    LinearLayout loading_ProgressBar;
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.panic_fragment,container,false);
         //加载view组件
         load_view();
-        //注册广播接收器
+        //注册接收选择器的参数
         getActivity().registerReceiver(new PickerSendBroadcast(),pickerfilter);
         seekSFTopicList = new ArrayList<Sfk>();
         adapter = new Seek_sf_topic_adapter(getActivity(),seekSFTopicList,R.layout.seek_sf_topic_list);
         seek_sf_topic_listView.setAdapter(adapter);
-        //注册接收选择器的参数
-//        getActivity().registerReceiver(new PickerSendBroadcast(), filter);
+
         //选择加载沙发单列表
         refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
@@ -73,6 +75,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
 
     //加载view组件
     private void load_view() {
+        loading_ProgressBar = (LinearLayout) view.findViewById(R.id.loading_ProgressBar);
         select_to_refresh_head = (RelativeLayout) view.findViewById(R.id.select_to_refresh_head);
         seek_sf_topic_listView = (ListView) view.findViewById(R.id.seek_sf_topic_listView2);
         refreshableView = (RefreshableView) view.findViewById(R.id.refreshable_view);
@@ -83,7 +86,8 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
 
     /*首次加载沙发单列表*/
     public void loadFirstData() {
-        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
+        loading_ProgressBar.setVisibility(View.VISIBLE);//添加圆形滚动条
+//        select_to_refresh_head.setVisibility(View.VISIBLE);//添加listview加载数据进度条
         //获取沙发单列表
         AsyncLoadFirstData asyncLoadFirstData = new AsyncLoadFirstData();
         asyncLoadFirstData.execute(2);
@@ -108,9 +112,25 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         @Override
         protected void onPostExecute(List<Sfk> sfks) {
             super.onPostExecute(sfks);
+
+            //图片渐变模糊度始终
+            AlphaAnimation aa = new AlphaAnimation(1.0f,0f);
+            //渐变时间
+            aa.setDuration(500);
+            aa.setRepeatCount(0);
+            loading_ProgressBar.startAnimation(aa);
+
+            //LisView渐变模糊度始终
+            AlphaAnimation aa2 = new AlphaAnimation(0f,1.0f);
+            //渐变时间
+            aa2.setDuration(500);
+            aa2.setRepeatCount(0);
+            seek_sf_topic_listView.startAnimation(aa2);
+
             adapter = new Seek_sf_topic_adapter(getActivity(),seekSFTopicList,R.layout.seek_sf_topic_list);
             seek_sf_topic_listView.setAdapter(adapter);
-            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
+            loading_ProgressBar.setVisibility(View.GONE);//加载完listview关闭数据圆形滚动条
+//            select_to_refresh_head.setVisibility(View.GONE);//加载完listview关闭数据进度条
             seek_sf_topic_listView.setOnItemClickListener(Panic_Fragment.this);
         }
     }
