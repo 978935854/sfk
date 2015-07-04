@@ -6,7 +6,6 @@
     <ImageView
         android:id="@+id/sfinfophoto"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/yellow_circle_up" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
