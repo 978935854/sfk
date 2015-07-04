@@ -137,7 +137,7 @@ public class SfInfoActivity extends Activity {
 
             }else if(msg.what==2){
                 int count =msg.arg1;
-                if(count>1) {
+                if(count>10) {
                     qskbutton.setBackgroundColor(Color.GRAY);
                     qskbutton.setEnabled(false);
                     qskinfo.setText("抱歉,你来迟了,沙发被抢走了！");
