@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,8 @@ public class SfInfoActivity extends Activity {
     private ProgressDialog progressDialog;
     private AlertDialog.Builder builder;
     private LinearLayout loading_ProgressBar,infolayout;
+    private int infotype;
+    private RelativeLayout qsklayout;
 
     private Handler mhandler=new Handler() {
 
@@ -123,6 +126,9 @@ public class SfInfoActivity extends Activity {
                 contactway.setText(sfk.getScontactway());
                 otherinfo.setText(sfk.getOthermessage());
                 publictime.setText(sfk.getSreleasetime());
+                if(infotype==0){
+                    qsklayout.setVisibility(View.GONE);
+                }
 
                 //滚动条渐变模糊度始终
                 AlphaAnimation aa = new AlphaAnimation(1.0f,0f);
@@ -181,6 +187,7 @@ public class SfInfoActivity extends Activity {
 
         loading_ProgressBar.setVisibility(View.VISIBLE);//添加圆形滚动条
         final int sfID=getIntent().getIntExtra("sfinfoID",1);
+        infotype=getIntent().getIntExtra("infotype",1);
 
         new Thread(new Runnable() {
             @Override
@@ -204,6 +211,8 @@ public class SfInfoActivity extends Activity {
                 mhandler.sendMessage(message);
             }
         }).start();
+
+        //加载图片
         new SfinfoAsyncTask().execute(Constant.projectServicePath + "/sfk/sfphoto?sfk.sid=" + sfID + "");
 
         qskbutton.setOnClickListener(new View.OnClickListener() {
@@ -356,6 +365,7 @@ public class SfInfoActivity extends Activity {
         qskinfo=(TextView)findViewById(R.id.qskinfo);
         mListView=(ScollListview) findViewById(R.id.photolistView);
         qskbutton=(Button)findViewById(R.id.qsfbutton);
+        qsklayout=(RelativeLayout)findViewById(R.id.qsklayout);
     }
     private void spandTimeMethod() {
         try {

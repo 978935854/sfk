@@ -261,6 +261,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         intent.putExtras(bundle);
         intent.setClass(this,SfInfoActivity.class);
         intent.putExtra("sfinfoID", seekSFTopicList.get(position).getSid());
+        intent.putExtra("infotype",0);
         startActivity(intent);
     }
 
