@@ -244,6 +244,7 @@ public class Panic_Fragment extends Fragment implements AdapterView.OnItemClickL
         Intent intent=new Intent();
         intent.setClass(getActivity(),SfInfoActivity.class);
         intent.putExtra("sfinfoID", sid);
+        intent.putExtra("tid",3);
         startActivity(intent);
     }
 

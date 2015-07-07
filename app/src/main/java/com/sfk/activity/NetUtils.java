@@ -2,6 +2,8 @@ package com.sfk.activity;
 
 import android.util.Log;
 
+import com.sfk.Constant.Constant;
+
 import org.json.JSONException;
 import org.json.JSONStringer;
 
@@ -98,7 +100,7 @@ public class NetUtils {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String url = "http://192.168.1.111:3000/register?" + data;
+        String url = Constant.projectServicePath+"register?" + data;
 
         try{
             // 利用string url构建URL对象

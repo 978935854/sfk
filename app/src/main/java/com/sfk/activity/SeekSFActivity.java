@@ -119,7 +119,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             try {
                 seekSFService = new SeekSFService(SeekSFActivity.this);
                 seekSFTopicList = seekSFService.getSeekSFTopicList(params[0]);
-                Thread.sleep(2000);//模拟网络耗时时间
+                Thread.sleep(1000);//模拟网络耗时时间
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -232,7 +232,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
             List<Sfk> sfkList = null;     //发送数据到服务器端并返回沙发单
             try {
                 sfkList = seekSFService.getSeekSFTopicListBySfk(params[0]);
-                Thread.sleep(2000);//模拟网络耗时时间
+                Thread.sleep(1000);//模拟网络耗时时间
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -261,7 +261,7 @@ public class SeekSFActivity extends Activity implements AdapterView.OnItemClickL
         intent.putExtras(bundle);
         intent.setClass(this,SfInfoActivity.class);
         intent.putExtra("sfinfoID", seekSFTopicList.get(position).getSid());
-        intent.putExtra("infotype",0);
+        intent.putExtra("tid",tid);
         startActivity(intent);
     }
 

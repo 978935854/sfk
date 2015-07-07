@@ -52,7 +52,7 @@ public class SfInfoActivity extends Activity {
     private LinearLayout loading_ProgressBar,infolayout;
     private int infotype;
     private RelativeLayout qsklayout;
-
+    private int tid;
     private Handler mhandler=new Handler() {
 
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -183,6 +183,7 @@ public class SfInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.sf_info);
+        tid = getIntent().getIntExtra("tid",0);
         init();
 
         loading_ProgressBar.setVisibility(View.VISIBLE);//添加圆形滚动条
@@ -366,6 +367,11 @@ public class SfInfoActivity extends Activity {
         mListView=(ScollListview) findViewById(R.id.photolistView);
         qskbutton=(Button)findViewById(R.id.qsfbutton);
         qsklayout=(RelativeLayout)findViewById(R.id.qsklayout);
+        if(tid==3){
+            qsklayout.setVisibility(View.VISIBLE);
+        }else{
+            qsklayout.setVisibility(View.GONE);
+        }
     }
     private void spandTimeMethod() {
         try {
