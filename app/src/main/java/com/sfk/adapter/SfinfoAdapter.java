@@ -56,13 +56,19 @@ public class SfinfoAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder=null;
         if(convertView==null){
+
             viewHolder =new ViewHolder();
             convertView=mInflater.inflate(R.layout.sf_info_photo,null);
             viewHolder.imageView=(ImageView)convertView.findViewById(R.id.sfinfophoto);
             convertView.setTag(viewHolder);
+
+            if(URLS.length==1){//判断如果只有一张图片时设置一张背景图片让list有高度
+                viewHolder.imageView.setImageResource(R.drawable.pictures_no);
+            }
         }else{
             viewHolder=(ViewHolder) convertView.getTag();
         }
+
             String url=mList.get(position).getPath();
             viewHolder.imageView.setTag(url);
 
