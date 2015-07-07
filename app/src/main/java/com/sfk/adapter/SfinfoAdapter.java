@@ -62,15 +62,15 @@ public class SfinfoAdapter extends BaseAdapter{
             viewHolder.imageView=(ImageView)convertView.findViewById(R.id.sfinfophoto);
             convertView.setTag(viewHolder);
 
-            if(URLS.length==1){//ÅĞ¶ÏÈç¹ûÖ»ÓĞÒ»ÕÅÍ¼Æ¬Ê±ÉèÖÃÒ»ÕÅ±³¾°Í¼Æ¬ÈÃlistÓĞ¸ß¶È
+            if(URLS.length==1){//åˆ¤æ–­å¦‚æœåªæœ‰ä¸€å¼ å›¾ç‰‡æ—¶è®¾ç½®ä¸€å¼ èƒŒæ™¯å›¾ç‰‡è®©listæœ‰é«˜åº¦
                 viewHolder.imageView.setImageResource(R.drawable.pictures_no);
             }
         }else{
             viewHolder=(ViewHolder) convertView.getTag();
         }
 
-            String url=mList.get(position).getPath();
-            viewHolder.imageView.setTag(url);
+        String url=mList.get(position).getPath();
+        viewHolder.imageView.setTag(url);
 
         mimageLoader.showImageviewAsyncTask(viewHolder.imageView, mList.get(position).getPath());
 
