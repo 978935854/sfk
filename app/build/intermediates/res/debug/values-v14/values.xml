@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/array.xml -->
+    <!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/values-v14/array.xml -->
     <eat-comment/>
     <string-array name="age">
         <item>20岁以下</item>
@@ -326,7 +326,7 @@
         <item>玉树藏族自治州</item>
         <item>海西蒙古族藏族自治州</item>
     </string-array>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/scenic_array.xml -->
+    <!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/values-v14/scenic_array.xml -->
     <eat-comment/>
     <string-array name="scenic_anhui">
 
@@ -431,7 +431,7 @@
     <string-array name="scenic_zhejiang">
 
     </string-array>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/array.xml -->
+    <!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/values-v14/array.xml -->
     <eat-comment/>
     <string-array name="sex">
         <item>男</item>
@@ -582,12 +582,12 @@
         <item>台州市</item>
         <item>丽水市</item>
     </string-array>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- API 14 theme customizations can go here. -->
     </style>
-    <!-- From: file:/E:/android/android/Git_sfk/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-v14/values.xml -->
+    <!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/res/values-v14/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat.Base.SearchResult.Subtitle" parent="@android:TextAppearance.Holo.SearchResult.Subtitle"/>
     <style name="TextAppearance.AppCompat.Base.SearchResult.Title" parent="@android:TextAppearance.Holo.SearchResult.Title"/>

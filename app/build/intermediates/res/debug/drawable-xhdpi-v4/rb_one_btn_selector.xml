@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/mainpage_pressed" android:state_checked="true"></item>
     <item android:drawable="@drawable/mainpage_normal" android:state_enabled="false"></item>
     <item android:drawable="@drawable/mainpage_normal"></item>
-</selector><!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/drawable-xhdpi/rb_one_btn_selector.xml -->
+</selector><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/drawable-xhdpi/rb_one_btn_selector.xml -->

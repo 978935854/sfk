@@ -3,18 +3,18 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 15
     buildToolsVersion "21.1.1"
-
     defaultConfig {
-        applicationId "com.example.sfk"
+        applicationId 'com.gdkm.sfk'
         minSdkVersion 8
         targetSdkVersion 15
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+    productFlavors {
     }
 }
 
@@ -23,4 +23,10 @@ dependencies {
     compile 'com.android.support:support-v4:18.0.0'
     compile files('src/main/libs/android-async-http-1.4.6.jar')
     compile files('src/main/libs/Afinal-0.3.4.jar')
+    compile files('src/main/libs/open_sdk_r5276.jar')
+    compile files('src/main/libs/mta-sdk-1.6.2.jar')
+    compile files('src/main/libs/gson-2.3.1.jar')
+    compile files('src/main/libs/okhttp-2.5.0.jar')
+    compile files('src/main/libs/okio-1.6.0.jar')
+    compile files('src/main/libs/httpmime-4.2.1.jar')
 }

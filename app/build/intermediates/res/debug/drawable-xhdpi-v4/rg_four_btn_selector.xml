@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/icon_people_gray" android:state_enabled="false"></item>
     <item android:drawable="@drawable/icon_people_gray"></item>
 
-</selector><!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/drawable-xhdpi/rg_four_btn_selector.xml -->
+</selector><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/drawable-xhdpi/rg_four_btn_selector.xml -->

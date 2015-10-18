@@ -9,25 +9,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/main_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Main_Fragment" />
+        android:name="com.gdkm.sfk.fragment.Main_Fragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/panic_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Panic_Fragment" />
+        android:name="com.gdkm.sfk.fragment.Panic_Fragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bbs_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.BBS_Fragment" />
+        android:name="com.gdkm.sfk.fragment.BBS_Fragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/person_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Person_Fragment" />
+        android:name="com.gdkm.sfk.fragment.Person_Fragment" />
 
     <RadioGroup
         android:layout_width="fill_parent"
@@ -37,8 +37,8 @@
         android:orientation="horizontal"
         android:background="#ffe6e6e6">
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/main"
             style="@style/rg_btn_style"
             android:id="@+id/main_radioButton"
@@ -49,8 +49,8 @@
             android:textColor="@color/color_main_radiobutton" />
 
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/panic"
             android:id="@+id/panic_radioButton"
             android:drawableTop="@drawable/rb_two_btn_selector"
@@ -59,8 +59,8 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/color_main_radiobutton" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/bbs"
             android:id="@+id/bbs_radioButton"
             android:drawableTop="@drawable/rb_three_btn_selector"
@@ -69,8 +69,8 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/color_main_radiobutton" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/person"
             android:id="@+id/person_radioButton"
             android:drawableTop="@drawable/rg_four_btn_selector"
@@ -81,4 +81,4 @@
     </RadioGroup>
 
 </LinearLayout>
-<!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/activity_main.xml -->

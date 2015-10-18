@@ -6,21 +6,21 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-
-        <TextView
+        <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="我的沙发游"
-            android:id="@+id/bbs_TopTitle"
-            android:textSize="20dp"
-            android:gravity="center_vertical"
-            android:background="#b6262b4d"
-            android:textColor="#ffcfd8e5" />
+            android:layout_height="50dp"
+            android:background="#42a664">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:id="@+id/bbs_top_List" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="社区"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
 
         <ListView
             android:layout_width="fill_parent"
@@ -29,4 +29,4 @@
 
     </LinearLayout>
 </LinearLayout>
-<!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/layout/bbs_fragment.xml -->
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/bbs_fragment.xml -->

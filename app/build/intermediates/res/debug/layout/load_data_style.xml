@@ -1,17 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="100dp"
-    android:orientation="horizontal">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/pull_to_refresh_head"
+android:layout_width="fill_parent"
+android:layout_height="60dip" >
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="60dip"
+    android:layout_centerInParent="true"
+    android:orientation="horizontal" >
+
     <ProgressBar
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        />
+        android:id="@+id/progress_bar"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical" />
+
     <TextView
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="数据正在加载..."
-        android:layout_gravity="bottom"
-        android:textSize="16sp"
-        android:layout_marginBottom="5dp" />
+        android:layout_weight="1"
+        android:text="正在加载数据..."
+        android:gravity="fill_vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp" />
 </LinearLayout>
-<!-- From: file:/E:/android/android/Git_sfk/sfk/app/src/main/res/layout/load_data_style.xml -->
+
+</RelativeLayout><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/load_data_style.xml -->
