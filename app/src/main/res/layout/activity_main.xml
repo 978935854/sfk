@@ -9,25 +9,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/main_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Main_Fragment" />
+        android:name="com.gdkm.sfk.fragment.MainFragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/panic_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Panic_Fragment" />
+        android:name="com.gdkm.sfk.fragment.PanicFragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bbs_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.BBS_Fragment" />
+        android:name="com.gdkm.sfk.fragment.BbsFragment" />
     <fragment
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/person_fragment"
         android:layout_weight="1"
-        android:name="com.sfk.fragment.Person_Fragment" />
+        android:name="com.gdkm.sfk.fragment.PersonFragment" />
 
     <RadioGroup
         android:layout_width="fill_parent"

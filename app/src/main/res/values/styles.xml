@@ -12,9 +12,10 @@
         -->
     </style>
 
+
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="Transparent" parent="android:Theme.Light">
@@ -22,12 +23,24 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="sf_info_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">20dp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_marginLeft">6dp</item>
+    <style name="left_sf_info_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="right_sf_info_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/holo_orange_dark</item>
+        <item name="android:layout_marginLeft">8dp</item>
     </style>
 
     <style name="sf_info_text_2">
@@ -54,6 +67,48 @@
         　　<item name="android:maxWidth">76dip</item>
         　　<item name="android:minHeight">76dip</item>
         　　<item name="android:maxHeight">76dip</item>
+    </style>
+
+    <!--横向细线样式-->
+    <style name="MyHorizontalLine">
+        <item name="android:background">#cccccc</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+    <!--竖向细线样式-->
+    <style name="MyVerticalLine">
+        <item name="android:background">#cccccc</item>
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="cornerDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/coner_picker</item>
+        <item name="android:windowBackground">@drawable/coner_picker</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+
+    </style>
+
+    <style name="weekName">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="calender_text1_style" parent="AppBaseTheme">
+        <item name="android:textColor">#4BB4EB</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
 </resources>

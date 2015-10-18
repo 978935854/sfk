@@ -6,21 +6,29 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-
-        <TextView
+        <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="我的沙发游"
-            android:id="@+id/bbs_TopTitle"
-            android:textSize="20dp"
-            android:gravity="center_vertical"
-            android:background="#b6039101"
-            android:textColor="#ffcfd8e5" />
+            android:layout_height="50dp"
+            android:background="#42a664">
 
-        <ListView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="社区"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+        <com.gdkm.sfk.view.ScollListView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/bbs_TopicList" />
+            android:layout_height="match_parent"
+            android:id="@+id/bbs_TopicList"
+            android:background="@color/light_gray2"
+            android:divider="#00000000"
+            android:dividerHeight="18dp"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -11,24 +11,43 @@
     <string name="searchSF">搜索沙发</string>
     <string name="seekSF">寻找沙发</string>
     <string name="ReleaseSF">发布沙发</string>
+    <string name="shouldSF">申请沙发</string>
+    <string name="handSF">我有沙发</string>
 
-    <string name="title_sfk">沙发帖子标题</string>
-    <string name="saddress_sfk">沙发地点</string>
-    <string name="info_sfk">沙发描述</string>
-    <string name="account_sfk">沙发帖子内容</string>
-    <string name="type_sfk">沙发类型</string>
-    <string name="stype_sfk">帖子类型</string>
-    <string name="speoplenum_sfk">人数限制</string>
-    <string name="ssex_sfk">性别限制</string>
-    <string name="sage_sfk">年龄限制</string>
-    <string name="lasttime_sfk">时间限制</string>
-    <string name="yourgoods_sfk">自带物品</string>
-    <string name="scontactway_sfk">联系方式</string>
-    <string name="othermessage_sfk">其他信息</string>
+    <string name="addSFMessage">填写沙发详情</string>
+    <string name="title_sfk">帖子标题: </string>
+    <string name="saddress_sfk">沙发地点: </string>
+    <string name="info_sfk">沙发描述: </string>
+    <string name="account_sfk">帖子内容: </string>
+    <string name="type_sfk">沙发类型: </string>
+    <string name="stype_sfk">帖子类型: </string>
+    <string name="speoplenum_sfk">接待人数: </string>
+    <string name="ssex_sfk">性别限制: </string>
+    <string name="sage_sfk">年龄限制: </string>
+    <string name="lasttime_sfk">时间限制: </string>
+    <string name="yourgoods_sfk">自带物品: </string>
+    <string name="scontactway_sfk">联系方式: </string>
+    <string name="othermessage_sfk">其他信息: </string>
     <string name="addSfk">发布沙发</string>
     <string name="Choice">选择图片</string>
     <string name="path">路径显示</string>
+    <string name="shafa">沙发</string>
+    <string name="room">客厅</string>
+    <string name="mat">地铺</string>
+    <string name="other">其他</string>
 
+    <string name="speoplenum_one">1人</string>
+    <string name="speoplenum_two">2人</string>
+    <string name="speoplenum_three">3人</string>
+    <string name="speoplenum_more">3人以上</string>
+
+    <string name="boy">男</string>
+    <string name="girl">女</string>
+    <string name="boyOrGirl">男女不限</string>
+    
+    <string name="selectAddress">请选择地方：</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
     <!-- 登陆注册 -->
 
     <string name="et_digits">1234567890.@comnqqutlkgai</string>
@@ -56,6 +75,9 @@
         <string name="updated_at">上次更新于%1$s前</string>
         <string name="updated_just_now">刚刚更新</string>
         <string name="time_error">时间有问题</string>
+        <string name="title_activity_person_info">PersonInfoActivity</string>
+        <string name="pull_foot_refresh">正在加载数据...</string>
+        <string name="pull_foot_refresh_complete">加载数据完成！</string>
 
-
+    <string name="task_reminder">任务提醒</string>
 </resources>

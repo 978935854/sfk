@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="#ffffff" >
-        <com.sfk.UI.PickerView
+        <com.gdkm.sfk.UI.PickerView
             android:id="@+id/picker_view"
             android:layout_width="300dp"
             android:layout_height="220dp" />

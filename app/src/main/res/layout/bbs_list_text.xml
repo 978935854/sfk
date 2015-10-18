@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout2"
-            android:id="@+id/relativeLayout2">
+            android:id="@+id/relativeLayout2"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/bbs_topicTitle"
@@ -19,9 +23,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="left|top"
                 android:text="topicTitle"
-                android:textSize="25dp"
+                android:textSize="18dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true" />
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,8 +36,10 @@
                 android:id="@+id/bbs_topic_content"
                 android:layout_below="@+id/bbs_topicTitle"
                 android:layout_alignParentLeft="true"
-                android:textSize="15dp"
-                android:maxLength="46" />
+                android:textSize="14dp"
+                android:maxLength="46"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -43,10 +51,12 @@
 
             <ImageView
                 android:id="@+id/bbs_topic_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.08"
-                android:src="@drawable/mainpage_my_pressed" />
+                android:layout_width="30dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.05"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/e021"
+                android:layout_gravity="center_vertical" />
 
             <LinearLayout
                 android:layout_width="20dp"
@@ -75,19 +85,18 @@
                     android:layout_weight="1"
                     android:alpha="0.8"
                     android:text="a"
-                    android:textColor="#ff262626"
+                    android:textColor="@color/dark_gray"
                     android:textSize="@dimen/bbs_user_time_textSize" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <ListView
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bbs_imageListView"
-            android:layout_below="@id/relativeLayout2"
-            />
-
+    <LinearLayout
+        android:id="@+id/lly_bbsPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginBottom="8dp"/>
     </RelativeLayout>
 </LinearLayout>
