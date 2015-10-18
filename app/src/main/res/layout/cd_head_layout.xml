@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" 
+    android:background="#363F50">
+    <ImageButton 
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/back_btn"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/cd_back"/>
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/head_title"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/task_reminder"
+        android:textSize="18sp"
+        android:textColor="#ffffff"/>"
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/main_bg">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true">
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/shouldSF"
+                android:textColor="#ffffff"
+                android:id="@+id/seekSF_btn"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/main_btn_selector"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/handSF"
+                android:textColor="#ffffff"
+                android:id="@+id/seek_sf_topic_listView"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/main_btn_selector"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/main_fragment.xml -->

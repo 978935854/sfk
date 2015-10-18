@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+
+
+    <declare-styleable name="BannerViewPager">
+        <attr name="banner_pointContainerWidth" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="banner_pointContainerHeight" format="dimension">
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="banner_pointContainerBackground" format="reference|color" />
+        <attr name="banner_pointFocusedImg" format="reference" />
+        <attr name="banner_pointUnfocusedImg" format="reference" />
+        <attr name="banner_pointSpacing" format="dimension" />
+        <attr name="banner_pointEdgeSpacing" format="dimension" />
+        <attr name="banner_pointVisibility" format="boolean" />
+        <attr name="banner_pointAutoPlayAble" format="boolean" />
+        <attr name="banner_pointAutoPlayInterval" format="integer" />
+        <attr name="banner_pointGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_horizontal" value="0x01" />
+        </attr>
+    </declare-styleable>
+
+
+    <!-- switch style-->
+    <declare-styleable name="SwitchView">
+        <attr name="textleft" format="string" />
+        <attr name="textmiddle" format="string" />
+        <attr name="textright" format="string" />
+        <attr name="container_Hight" format="dimension" />
+        <attr name="container_Width" format="dimension" />
+        <attr name="cursor_Hight" format="dimension" />
+        <attr name="cursor_Width" format="dimension" />
+        <attr name="cursor_Background" format="reference|color" />
+        <attr name="container_Background" format="reference|color" />
+    </declare-styleable>
+
+
+</resources>

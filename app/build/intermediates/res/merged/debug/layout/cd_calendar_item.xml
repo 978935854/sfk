@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/cd_gridview_selector_2">
+
+  <RelativeLayout
+        android:id="@+id/rly_cd_item"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/tvtext"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/holo_red_dark"
+            android:layout_centerInParent="true"
+            android:textSize="12sp"
+            android:layout_below="@+id/tvtext"/>
+    </RelativeLayout>
+</LinearLayout>
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/cd_calendar_item.xml -->

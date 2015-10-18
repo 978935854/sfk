@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    >
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="50dp"
+	    android:orientation="vertical" 
+	    android:background="#f5f5f5"
+        >
+
+        <TextView
+            android:id="@+id/selectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择" 
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="#6EB0FA"/>
+
+    </RelativeLayout>
+    <GridView 
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:id="@+id/some_btn_gv"
+		android:layout_weight="1"
+    	android:numColumns="7"
+    	android:background="#f5f5f5"
+    	android:verticalSpacing="1dp"
+    	android:horizontalSpacing="1dp"
+        />
+
+     <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/cd_gray_gradient"
+        android:alpha="0.2"
+        />
+</LinearLayout>

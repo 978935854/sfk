@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#42a664"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sftitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/menu_bg"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/InfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+        <TextView
+            android:text="沙发类型："
+            style="@style/left_sf_info_text"/>
+        <TextView
+            style="@style/right_sf_info_text"
+            android:id="@+id/type" />
+        </LinearLayout>
+
+        <View style="@style/MyHorizontalLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="沙发地点："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/where" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="性别限制："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/sex" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="年龄限制："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/age" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="招待人数："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/mannumber" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="接待日期："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/day" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="自带物品："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/selfgoods" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="联系方式："
+                style="@style/left_sf_info_text"/>
+            <TextView
+                style="@style/right_sf_info_text"
+                android:id="@+id/contactway" />
+        </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="发布时间："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/publictime" />
+            </LinearLayout>
+            <View style="@style/MyHorizontalLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="其他信息："
+                    style="@style/left_sf_info_text"/>
+                <TextView
+                    style="@style/right_sf_info_text"
+                    android:id="@+id/otherinfo" />
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+
+            <RelativeLayout
+                android:id="@+id/qsklayout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/qskinfo"
+                    style="@style/left_sf_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:height="40dp"
+                    android:text="该沙发还没被抢走,赶紧下手！"
+                    android:textColor="#FF0000"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/qsfbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:height="40dp"
+                    android:background="#42a664"
+                    android:text="抢沙发"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:background="#f5f5f5">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/select_photo"
+                    android:layout_marginLeft="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="附件图片: "
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <View style="@style/MyHorizontalLine"/>
+
+            <com.gdkm.sfk.utils.ScollListview
+                android:id="@+id/photolistView"
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/activity_sf_info.xml -->

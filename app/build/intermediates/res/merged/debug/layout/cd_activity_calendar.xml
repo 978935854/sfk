@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:orientation="vertical"
+        >
+
+	 <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="60dp"
+	     android:background="#6EB0FA" >
+
+	     <RelativeLayout
+	         android:id="@+id/relativeLayout1"
+	         android:layout_width="120dp"
+	         android:layout_height="30dp"
+	         android:layout_alignParentRight="true"
+	         android:layout_centerVertical="true"
+	         android:layout_marginRight="18dp" 
+	         android:background="@drawable/cd_corner_calendar_head">
+
+	         <TextView
+	             android:id="@+id/month_tv"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_centerInParent="true"
+	             android:text="7月" 
+	             android:textColor="#ffffff"/>
+
+	         <ImageButton
+	             android:id="@+id/month_next_btn"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_alignParentRight="true"
+	             android:layout_centerVertical="true"
+	             android:background="@drawable/cd_next_icon"
+	             android:layout_marginRight="5dp"  />
+
+	         <ImageButton
+	             android:id="@+id/month_last_btn"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_alignParentLeft="true"
+	             android:layout_centerVertical="true"
+	             android:background="@drawable/cd_last_icon"
+	             android:layout_marginLeft="5dp" />
+
+	     </RelativeLayout>
+
+	     <RelativeLayout
+	         android:layout_width="120dp"
+	         android:layout_height="30dp"
+	         android:layout_alignParentLeft="true"
+	         android:layout_alignTop="@+id/relativeLayout1"
+	         android:layout_marginLeft="34dp"
+	         android:background="@drawable/cd_corner_calendar_head" >
+
+	         <TextView
+	             android:id="@+id/year_tv"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_centerInParent="true"
+	             android:textColor="#ffffff"
+	             android:text="2015年" />
+
+	         <ImageButton
+	             android:id="@+id/year_next_btn"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_alignParentRight="true"
+	             android:layout_centerVertical="true"
+	             android:background="@drawable/cd_next_icon"
+	             android:layout_marginRight="5dp"  />
+
+	         <ImageButton
+	             android:id="@+id/year_last_btn"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_alignParentLeft="true"
+	             android:layout_alignTop="@+id/year_next_btn"
+	             android:background="@drawable/cd_last_icon"
+	             android:layout_marginLeft="5dp"  />
+
+	     </RelativeLayout>
+	 </RelativeLayout>
+    
+	 <LinearLayout 
+	     android:layout_width="match_parent"
+    	 android:layout_height="50dp"
+    	 android:orientation="horizontal"
+    	 android:background="#f5f5f5"
+    	 android:weightSum="7"
+	     >
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期一"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期二"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期三"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期四"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期五"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期六"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	     <TextView 
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="星期日"
+	         android:layout_weight="1"
+	         android:layout_gravity="center_vertical"
+	         style="@style/calender_text1_style"
+	         />
+	 </LinearLayout>
+	 
+	 <GridView 
+	     android:layout_width="match_parent"
+	     android:layout_height="match_parent"
+	     android:layout_weight="1"
+	     android:id="@+id/date_gv"
+	     android:numColumns="7"
+	     android:background="#f5f5f5"
+	     android:verticalSpacing="1dp"
+	     android:horizontalSpacing="1dp"
+	     />
+	 
+    </LinearLayout>
+
+</LinearLayout>
+<!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/cd_activity_calendar.xml -->

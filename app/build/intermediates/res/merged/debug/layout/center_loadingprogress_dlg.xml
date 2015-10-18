@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading_ProgressBar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/coner_picker">
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_centerInParent="true"
+    android:background="@drawable/coner_picker"
+    >
+
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:max="100"
+        android:id="@+id/progressBar"
+        android:indeterminateDrawable="@drawable/eg_rotate_loading_style_01"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在努力加载..."
+        android:id="@+id/tv_load"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/dark_gray"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+</RelativeLayout><!-- From: file:/D:/Users/Administrator/AndroidStudioProjects/sfk/app/src/main/res/layout/center_loadingprogress_dlg.xml -->

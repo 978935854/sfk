@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pull_to_refresh_head"
+    android:layout_width="fill_parent"
+    android:layout_height="50dip"
+    android:background="@color/light_gray">
+
+    <LinearLayout
+        android:id="@+id/lly_Loading"
+        android:layout_width="180dip"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            >
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_centerInParent="true"
+                android:indeterminateDrawable="@drawable/eg_rotate_loading_style_01"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_load"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/pull_foot_refresh" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rly_loadComplete"
+        android:layout_width="180dip"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tv_load_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/pull_foot_refresh_complete" />
+    </RelativeLayout>
+
+</RelativeLayout>
